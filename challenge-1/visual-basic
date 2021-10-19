@@ -1,0 +1,185 @@
+Imports System
+Imports System.Collections.Generic
+Imports NUnit.Framework
+
+<TestFixture()> _
+Public Class ShoppingBagTests
+
+    
+    <Test()> _
+    Public Sub Test1()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(110.7, solution.CalculateBagTotal(New String() { "ABC123" }, New String() { "ABC1P10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test2()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(113, solution.CalculateBagTotal(New String() { "ABC123" }, New String() { "ABC1C10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test3()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(25, solution.CalculateBagTotal(New String() { "ABC010","DEF020","ABC010" }, New String() { "ABC2P50","DEF1C05" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test4()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(221.4, solution.CalculateBagTotal(New String() { "ABC123","ABC123" }, New String() { "ABC1P10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test5()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(7.6, solution.CalculateBagTotal(New String() { "ABC008" }, New String() { "ABC1P05" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test6()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(226, solution.CalculateBagTotal(New String() { "ABC123","ABC123" }, New String() { "ABC1C10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test7()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(3, solution.CalculateBagTotal(New String() { "ABC008" }, New String() { "ABC1C05" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test8()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(123, solution.CalculateBagTotal(New String() { "ABC123" }, New String() { "DEF1P10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test9()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(123, solution.CalculateBagTotal(New String() { "ABC123" }, New String() { "" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test10()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(0, solution.CalculateBagTotal(New String() { "" }, New String() { "ABC1P10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test11()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(0, solution.CalculateBagTotal(New String() { "" }, New String() { "" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test12()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(221.4, solution.CalculateBagTotal(New String() { "ABC123","ABC123" }, New String() { "ABC2P10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test13()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(246, solution.CalculateBagTotal(New String() { "ABC123","ABC123" }, New String() { "ABC3P10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test14()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(226, solution.CalculateBagTotal(New String() { "ABC123","ABC123" }, New String() { "ABC2C10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test15()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(246, solution.CalculateBagTotal(New String() { "ABC123","ABC123" }, New String() { "ABC3C10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test16()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(112.7, solution.CalculateBagTotal(New String() { "ABC123","BCD012" }, New String() { "ABC1P10","BCD1C10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test17()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(20, solution.CalculateBagTotal(New String() { "ABC005","BCD020" }, New String() { "ABC1C10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test18()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(180, solution.CalculateBagTotal(New String() { "ABC200" }, New String() { "ABC1C10","ABC1C20" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test19()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(160, solution.CalculateBagTotal(New String() { "ABC200" }, New String() { "ABC1P10","ABC1P20" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test20()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(180, solution.CalculateBagTotal(New String() { "ABC200" }, New String() { "ABC1C10","ABC1P10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test21()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(40, solution.CalculateBagTotal(New String() { "ABC050" }, New String() { "ABC1C10","ABC1P10" }))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test22()
+
+        Dim solution As ShoppingBag = New ShoppingBag()
+        Assert.AreEqual(400, solution.CalculateBagTotal(New String() { "ABC050","BCD020","BCD020","ABC050","BCD020","CDE020","EFG200","EFG200" }, New String() { "ABC3C40","ABC3P50","ABC2P10","BCD2C30","ABC2C05","ABC1P20","ABC1C05","DEF1C10","EFG3C40","EFG3P50","EFG2P10","EFG2C05","EFG1P20","EFG1C50" }))
+
+    End Sub
+
+End Class

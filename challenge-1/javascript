@@ -1,0 +1,94 @@
+require('./Solution.js');
+
+describe("ShoppingBagTests", function() {
+
+    
+    it("Test1", function() {
+        expect(calculateBagTotal([ "ABC123" ], [ "ABC1P10" ])).toEqual(110.7);
+    });
+    
+    it("Test2", function() {
+        expect(calculateBagTotal([ "ABC123" ], [ "ABC1C10" ])).toEqual(113);
+    });
+    
+    it("Test3", function() {
+        expect(calculateBagTotal([ "ABC010","DEF020","ABC010" ], [ "ABC2P50","DEF1C05" ])).toEqual(25);
+    });
+    
+    it("Test4", function() {
+        expect(calculateBagTotal([ "ABC123","ABC123" ], [ "ABC1P10" ])).toEqual(221.4);
+    });
+    
+    it("Test5", function() {
+        expect(calculateBagTotal([ "ABC008" ], [ "ABC1P05" ])).toEqual(7.6);
+    });
+    
+    it("Test6", function() {
+        expect(calculateBagTotal([ "ABC123","ABC123" ], [ "ABC1C10" ])).toEqual(226);
+    });
+    
+    it("Test7", function() {
+        expect(calculateBagTotal([ "ABC008" ], [ "ABC1C05" ])).toEqual(3);
+    });
+    
+    it("Test8", function() {
+        expect(calculateBagTotal([ "ABC123" ], [ "DEF1P10" ])).toEqual(123);
+    });
+    
+    it("Test9", function() {
+        expect(calculateBagTotal([ "ABC123" ], [ "" ])).toEqual(123);
+    });
+    
+    it("Test10", function() {
+        expect(calculateBagTotal([ "" ], [ "ABC1P10" ])).toEqual(0);
+    });
+    
+    it("Test11", function() {
+        expect(calculateBagTotal([ "" ], [ "" ])).toEqual(0);
+    });
+    
+    it("Test12", function() {
+        expect(calculateBagTotal([ "ABC123","ABC123" ], [ "ABC2P10" ])).toEqual(221.4);
+    });
+    
+    it("Test13", function() {
+        expect(calculateBagTotal([ "ABC123","ABC123" ], [ "ABC3P10" ])).toEqual(246);
+    });
+    
+    it("Test14", function() {
+        expect(calculateBagTotal([ "ABC123","ABC123" ], [ "ABC2C10" ])).toEqual(226);
+    });
+    
+    it("Test15", function() {
+        expect(calculateBagTotal([ "ABC123","ABC123" ], [ "ABC3C10" ])).toEqual(246);
+    });
+    
+    it("Test16", function() {
+        expect(calculateBagTotal([ "ABC123","BCD012" ], [ "ABC1P10","BCD1C10" ])).toEqual(112.7);
+    });
+    
+    it("Test17", function() {
+        expect(calculateBagTotal([ "ABC005","BCD020" ], [ "ABC1C10" ])).toEqual(20);
+    });
+    
+    it("Test18", function() {
+        expect(calculateBagTotal([ "ABC200" ], [ "ABC1C10","ABC1C20" ])).toEqual(180);
+    });
+    
+    it("Test19", function() {
+        expect(calculateBagTotal([ "ABC200" ], [ "ABC1P10","ABC1P20" ])).toEqual(160);
+    });
+    
+    it("Test20", function() {
+        expect(calculateBagTotal([ "ABC200" ], [ "ABC1C10","ABC1P10" ])).toEqual(180);
+    });
+    
+    it("Test21", function() {
+        expect(calculateBagTotal([ "ABC050" ], [ "ABC1C10","ABC1P10" ])).toEqual(40);
+    });
+    
+    it("Test22", function() {
+        expect(calculateBagTotal([ "ABC050","BCD020","BCD020","ABC050","BCD020","CDE020","EFG200","EFG200" ], [ "ABC3C40","ABC3P50","ABC2P10","BCD2C30","ABC2C05","ABC1P20","ABC1C05","DEF1C10","EFG3C40","EFG3P50","EFG2P10","EFG2C05","EFG1P20","EFG1C50" ])).toEqual(400);
+    });
+
+});

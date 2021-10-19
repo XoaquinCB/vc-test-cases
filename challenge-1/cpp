@@ -1,0 +1,161 @@
+#include "solution.hpp"
+#include <gtest/gtest.h>
+#include <vector>
+
+using namespace ::testing;
+using namespace ::std;
+
+TEST(ShoppingBagTests, Test1)
+{
+    vector<string> items = { "ABC123" };
+    vector<string> discounts = { "ABC1P10" };
+    double expected = 110.7;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test2)
+{
+    vector<string> items = { "ABC123" };
+    vector<string> discounts = { "ABC1C10" };
+    double expected = 113;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test3)
+{
+    vector<string> items = { "ABC010","DEF020","ABC010" };
+    vector<string> discounts = { "ABC2P50","DEF1C05" };
+    double expected = 25;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test4)
+{
+    vector<string> items = { "ABC123","ABC123" };
+    vector<string> discounts = { "ABC1P10" };
+    double expected = 221.4;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test5)
+{
+    vector<string> items = { "ABC008" };
+    vector<string> discounts = { "ABC1P05" };
+    double expected = 7.6;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test6)
+{
+    vector<string> items = { "ABC123","ABC123" };
+    vector<string> discounts = { "ABC1C10" };
+    double expected = 226;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test7)
+{
+    vector<string> items = { "ABC008" };
+    vector<string> discounts = { "ABC1C05" };
+    double expected = 3;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test8)
+{
+    vector<string> items = { "ABC123" };
+    vector<string> discounts = { "DEF1P10" };
+    double expected = 123;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test9)
+{
+    vector<string> items = { "ABC123" };
+    vector<string> discounts = { "" };
+    double expected = 123;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test10)
+{
+    vector<string> items = { "" };
+    vector<string> discounts = { "ABC1P10" };
+    double expected = 0;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test11)
+{
+    vector<string> items = { "" };
+    vector<string> discounts = { "" };
+    double expected = 0;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test12)
+{
+    vector<string> items = { "ABC123","ABC123" };
+    vector<string> discounts = { "ABC2P10" };
+    double expected = 221.4;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test13)
+{
+    vector<string> items = { "ABC123","ABC123" };
+    vector<string> discounts = { "ABC3P10" };
+    double expected = 246;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test14)
+{
+    vector<string> items = { "ABC123","ABC123" };
+    vector<string> discounts = { "ABC2C10" };
+    double expected = 226;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test15)
+{
+    vector<string> items = { "ABC123","ABC123" };
+    vector<string> discounts = { "ABC3C10" };
+    double expected = 246;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test16)
+{
+    vector<string> items = { "ABC123","BCD012" };
+    vector<string> discounts = { "ABC1P10","BCD1C10" };
+    double expected = 112.7;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test17)
+{
+    vector<string> items = { "ABC005","BCD020" };
+    vector<string> discounts = { "ABC1C10" };
+    double expected = 20;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test18)
+{
+    vector<string> items = { "ABC200" };
+    vector<string> discounts = { "ABC1C10","ABC1C20" };
+    double expected = 180;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test19)
+{
+    vector<string> items = { "ABC200" };
+    vector<string> discounts = { "ABC1P10","ABC1P20" };
+    double expected = 160;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test20)
+{
+    vector<string> items = { "ABC200" };
+    vector<string> discounts = { "ABC1C10","ABC1P10" };
+    double expected = 180;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test21)
+{
+    vector<string> items = { "ABC050" };
+    vector<string> discounts = { "ABC1C10","ABC1P10" };
+    double expected = 40;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}
+TEST(ShoppingBagTests, Test22)
+{
+    vector<string> items = { "ABC050","BCD020","BCD020","ABC050","BCD020","CDE020","EFG200","EFG200" };
+    vector<string> discounts = { "ABC3C40","ABC3P50","ABC2P10","BCD2C30","ABC2C05","ABC1P20","ABC1C05","DEF1C10","EFG3C40","EFG3P50","EFG2P10","EFG2C05","EFG1P20","EFG1C50" };
+    double expected = 400;
+    ASSERT_EQ(expected, CalculateBagTotal(items, discounts));
+}

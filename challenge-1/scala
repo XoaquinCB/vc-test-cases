@@ -1,0 +1,182 @@
+import org.scalatest.FunSuite
+
+class TestSuite extends FunSuite {
+
+    
+    test("test-1") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC123"), Array[String]("ABC1P10")) === (110.7))
+
+    }
+    
+    test("test-2") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC123"), Array[String]("ABC1C10")) === (113))
+
+    }
+    
+    test("test-3") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC010","DEF020","ABC010"), Array[String]("ABC2P50","DEF1C05")) === (25))
+
+    }
+    
+    test("test-4") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC123","ABC123"), Array[String]("ABC1P10")) === (221.4))
+
+    }
+    
+    test("test-5") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC008"), Array[String]("ABC1P05")) === (7.6))
+
+    }
+    
+    test("test-6") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC123","ABC123"), Array[String]("ABC1C10")) === (226))
+
+    }
+    
+    test("test-7") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC008"), Array[String]("ABC1C05")) === (3))
+
+    }
+    
+    test("test-8") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC123"), Array[String]("DEF1P10")) === (123))
+
+    }
+    
+    test("test-9") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC123"), Array[String]("")) === (123))
+
+    }
+    
+    test("test-10") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String](""), Array[String]("ABC1P10")) === (0))
+
+    }
+    
+    test("test-11") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String](""), Array[String]("")) === (0))
+
+    }
+    
+    test("test-12") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC123","ABC123"), Array[String]("ABC2P10")) === (221.4))
+
+    }
+    
+    test("test-13") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC123","ABC123"), Array[String]("ABC3P10")) === (246))
+
+    }
+    
+    test("test-14") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC123","ABC123"), Array[String]("ABC2C10")) === (226))
+
+    }
+    
+    test("test-15") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC123","ABC123"), Array[String]("ABC3C10")) === (246))
+
+    }
+    
+    test("test-16") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC123","BCD012"), Array[String]("ABC1P10","BCD1C10")) === (112.7))
+
+    }
+    
+    test("test-17") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC005","BCD020"), Array[String]("ABC1C10")) === (20))
+
+    }
+    
+    test("test-18") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC200"), Array[String]("ABC1C10","ABC1C20")) === (180))
+
+    }
+    
+    test("test-19") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC200"), Array[String]("ABC1P10","ABC1P20")) === (160))
+
+    }
+    
+    test("test-20") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC200"), Array[String]("ABC1C10","ABC1P10")) === (180))
+
+    }
+    
+    test("test-21") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC050"), Array[String]("ABC1C10","ABC1P10")) === (40))
+
+    }
+    
+    test("test-22") {
+
+        val instance = new ShoppingBag
+
+        assert(instance.calculateBagTotal(Array[String]("ABC050","BCD020","BCD020","ABC050","BCD020","CDE020","EFG200","EFG200"), Array[String]("ABC3C40","ABC3P50","ABC2P10","BCD2C30","ABC2C05","ABC1P20","ABC1C05","DEF1C10","EFG3C40","EFG3P50","EFG2P10","EFG2C05","EFG1P20","EFG1C50")) === (400))
+
+    }
+
+}

@@ -1,0 +1,167 @@
+import XCTest
+
+class ShoppingBagTests: XCTestCase {
+    
+    func test_1() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC123"], discounts: ["ABC1P10"]), 110.7)
+    }
+    
+    func test_2() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC123"], discounts: ["ABC1C10"]), 113)
+    }
+    
+    func test_3() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC010","DEF020","ABC010"], discounts: ["ABC2P50","DEF1C05"]), 25)
+    }
+    
+    func test_4() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC123","ABC123"], discounts: ["ABC1P10"]), 221.4)
+    }
+    
+    func test_5() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC008"], discounts: ["ABC1P05"]), 7.6)
+    }
+    
+    func test_6() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC123","ABC123"], discounts: ["ABC1C10"]), 226)
+    }
+    
+    func test_7() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC008"], discounts: ["ABC1C05"]), 3)
+    }
+    
+    func test_8() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC123"], discounts: ["DEF1P10"]), 123)
+    }
+    
+    func test_9() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC123"], discounts: [""]), 123)
+    }
+    
+    func test_10() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: [""], discounts: ["ABC1P10"]), 0)
+    }
+    
+    func test_11() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: [""], discounts: [""]), 0)
+    }
+    
+    func test_12() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC123","ABC123"], discounts: ["ABC2P10"]), 221.4)
+    }
+    
+    func test_13() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC123","ABC123"], discounts: ["ABC3P10"]), 246)
+    }
+    
+    func test_14() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC123","ABC123"], discounts: ["ABC2C10"]), 226)
+    }
+    
+    func test_15() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC123","ABC123"], discounts: ["ABC3C10"]), 246)
+    }
+    
+    func test_16() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC123","BCD012"], discounts: ["ABC1P10","BCD1C10"]), 112.7)
+    }
+    
+    func test_17() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC005","BCD020"], discounts: ["ABC1C10"]), 20)
+    }
+    
+    func test_18() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC200"], discounts: ["ABC1C10","ABC1C20"]), 180)
+    }
+    
+    func test_19() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC200"], discounts: ["ABC1P10","ABC1P20"]), 160)
+    }
+    
+    func test_20() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC200"], discounts: ["ABC1C10","ABC1P10"]), 180)
+    }
+    
+    func test_21() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC050"], discounts: ["ABC1C10","ABC1P10"]), 40)
+        
+    }
+    
+    func test_22() {
+        let solution = ShoppingBag()
+        XCTAssertEqual(solution.calculateBagTotal(items: ["ABC050","BCD020","BCD020","ABC050","BCD020","CDE020","EFG200","EFG200"], discounts: ["ABC3C40","ABC3P50","ABC2P10","BCD2C30","ABC2C05","ABC1P20","ABC1C05","DEF1C10","EFG3C40","EFG3P50","EFG2P10","EFG2C05","EFG1P20","EFG1C50"]), 400)
+    }
+}
+
+extension ShoppingBagTests {
+    static var allTests : [(String, (ShoppingBagTests) -> () throws -> Void)] {
+        return [
+            
+            ("test_1", test_1),
+
+            ("test_2", test_2),
+
+            ("test_3", test_3), 
+            
+            ("test_4", test_4),
+
+            ("test_5", test_5),
+
+            ("test_6", test_6),
+
+            ("test_7", test_7),
+
+            ("test_8", test_8),
+
+            ("test_9", test_9),
+
+            ("test_10", test_10),
+
+            ("test_11", test_11),
+
+            ("test_12", test_12),
+
+            ("test_13", test_13),
+
+            ("test_14", test_14),
+
+            ("test_15", test_15),
+
+            ("test_16", test_16),
+
+            ("test_17", test_17),
+
+            ("test_18", test_18),
+
+            ("test_19", test_19),
+
+            ("test_20", test_20),
+
+            ("test_21", test_21),
+
+            ("test_22", test_22),
+ 
+        ]
+    }
+}

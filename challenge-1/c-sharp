@@ -1,0 +1,184 @@
+using System;
+using System.Collections.Generic;
+using NUnit.Framework;
+
+[TestFixture]
+public class ShoppingBagTests
+{
+    
+    [Test]
+    public void Test1()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(110.7, solution.CalculateBagTotal(new string[] { "ABC123" }, new string[] { "ABC1P10" }));
+    }
+    
+    [Test]
+    public void Test2()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(113, solution.CalculateBagTotal(new string[] { "ABC123" }, new string[] { "ABC1C10" }));
+    }
+    
+    [Test]
+    public void Test3()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(25, solution.CalculateBagTotal(new string[] { "ABC010","DEF020","ABC010" }, new string[] { "ABC2P50","DEF1C05" }));
+    }
+    
+    [Test]
+    public void Test4()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(221.4, solution.CalculateBagTotal(new string[] { "ABC123","ABC123" }, new string[] { "ABC1P10" }));
+    }
+    
+    [Test]
+    public void Test5()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(7.6, solution.CalculateBagTotal(new string[] { "ABC008" }, new string[] { "ABC1P05" }));
+    }
+    
+    [Test]
+    public void Test6()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(226, solution.CalculateBagTotal(new string[] { "ABC123","ABC123" }, new string[] { "ABC1C10" }));
+    }
+    
+    [Test]
+    public void Test7()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(3, solution.CalculateBagTotal(new string[] { "ABC008" }, new string[] { "ABC1C05" }));
+    }
+    
+    [Test]
+    public void Test8()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(123, solution.CalculateBagTotal(new string[] { "ABC123" }, new string[] { "DEF1P10" }));
+    }
+    
+    [Test]
+    public void Test9()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(123, solution.CalculateBagTotal(new string[] { "ABC123" }, new string[] { "" }));
+    }
+    
+    [Test]
+    public void Test10()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(0, solution.CalculateBagTotal(new string[] { "" }, new string[] { "ABC1P10" }));
+    }
+    
+    [Test]
+    public void Test11()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(0, solution.CalculateBagTotal(new string[] { "" }, new string[] { "" }));
+    }
+    
+    [Test]
+    public void Test12()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(221.4, solution.CalculateBagTotal(new string[] { "ABC123","ABC123" }, new string[] { "ABC2P10" }));
+    }
+    
+    [Test]
+    public void Test13()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(246, solution.CalculateBagTotal(new string[] { "ABC123","ABC123" }, new string[] { "ABC3P10" }));
+    }
+    
+    [Test]
+    public void Test14()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(226, solution.CalculateBagTotal(new string[] { "ABC123","ABC123" }, new string[] { "ABC2C10" }));
+    }
+    
+    [Test]
+    public void Test15()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(246, solution.CalculateBagTotal(new string[] { "ABC123","ABC123" }, new string[] { "ABC3C10" }));
+    }
+    
+    [Test]
+    public void Test16()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(112.7, solution.CalculateBagTotal(new string[] { "ABC123","BCD012" }, new string[] { "ABC1P10","BCD1C10" }));
+    }
+    
+    [Test]
+    public void Test17()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(20, solution.CalculateBagTotal(new string[] { "ABC005","BCD020" }, new string[] { "ABC1C10" }));
+    }
+    
+    [Test]
+    public void Test18()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(180, solution.CalculateBagTotal(new string[] { "ABC200" }, new string[] { "ABC1C10","ABC1C20" }));
+    }
+    
+    [Test]
+    public void Test19()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(160, solution.CalculateBagTotal(new string[] { "ABC200" }, new string[] { "ABC1P10","ABC1P20" }));
+    }
+    
+    [Test]
+    public void Test20()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(180, solution.CalculateBagTotal(new string[] { "ABC200" }, new string[] { "ABC1C10","ABC1P10" }));
+    }
+    
+    [Test]
+    public void Test21()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(40, solution.CalculateBagTotal(new string[] { "ABC050" }, new string[] { "ABC1C10","ABC1P10" }));
+    }
+    
+    [Test]
+    public void Test22()
+    {
+        var solution = new ShoppingBag();
+
+        Assert.AreEqual(400, solution.CalculateBagTotal(new string[] { "ABC050","BCD020","BCD020","ABC050","BCD020","CDE020","EFG200","EFG200" }, new string[] { "ABC3C40","ABC3P50","ABC2P10","BCD2C30","ABC2C05","ABC1P20","ABC1C05","DEF1C10","EFG3C40","EFG3P50","EFG2P10","EFG2C05","EFG1P20","EFG1C50" }));
+    }
+}

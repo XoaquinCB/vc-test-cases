@@ -1,0 +1,92 @@
+module ShoppingBagTests
+
+open NUnit.Framework
+
+
+[<Test>]
+let ``Test1`` () =
+ Assert.AreEqual(110.7, ShoppingBag.CalculateBagTotal([| "ABC123" |], [| "ABC1P10" |]))
+
+[<Test>]
+let ``Test2`` () =
+ Assert.AreEqual(113, ShoppingBag.CalculateBagTotal([| "ABC123" |], [| "ABC1C10" |]))
+
+[<Test>]
+let ``Test3`` () =
+ Assert.AreEqual(25, ShoppingBag.CalculateBagTotal([| "ABC010";"DEF020";"ABC010" |], [| "ABC2P50";"DEF1C05" |]))
+
+[<Test>]
+let ``Test4`` () =
+ Assert.AreEqual(221.4, ShoppingBag.CalculateBagTotal([| "ABC123";"ABC123" |], [| "ABC1P10" |]))
+
+[<Test>]
+let ``Test5`` () =
+ Assert.AreEqual(7.6, ShoppingBag.CalculateBagTotal([| "ABC008" |], [| "ABC1P05" |]))
+
+[<Test>]
+let ``Test6`` () =
+ Assert.AreEqual(226, ShoppingBag.CalculateBagTotal([| "ABC123";"ABC123" |], [| "ABC1C10" |]))
+
+[<Test>]
+let ``Test7`` () =
+ Assert.AreEqual(3, ShoppingBag.CalculateBagTotal([| "ABC008" |], [| "ABC1C05" |]))
+
+[<Test>]
+let ``Test8`` () =
+ Assert.AreEqual(123, ShoppingBag.CalculateBagTotal([| "ABC123" |], [| "DEF1P10" |]))
+
+[<Test>]
+let ``Test9`` () =
+ Assert.AreEqual(123, ShoppingBag.CalculateBagTotal([| "ABC123" |], [| "" |]))
+
+[<Test>]
+let ``Test10`` () =
+ Assert.AreEqual(0, ShoppingBag.CalculateBagTotal([| "" |], [| "ABC1P10" |]))
+
+[<Test>]
+let ``Test11`` () =
+ Assert.AreEqual(0, ShoppingBag.CalculateBagTotal([| "" |], [| "" |]))
+
+[<Test>]
+let ``Test12`` () =
+ Assert.AreEqual(221.4, ShoppingBag.CalculateBagTotal([| "ABC123";"ABC123" |], [| "ABC2P10" |]))
+
+[<Test>]
+let ``Test13`` () =
+ Assert.AreEqual(246, ShoppingBag.CalculateBagTotal([| "ABC123";"ABC123" |], [| "ABC3P10" |]))
+
+[<Test>]
+let ``Test14`` () =
+ Assert.AreEqual(226, ShoppingBag.CalculateBagTotal([| "ABC123";"ABC123" |], [| "ABC2C10" |]))
+
+[<Test>]
+let ``Test15`` () =
+ Assert.AreEqual(246, ShoppingBag.CalculateBagTotal([| "ABC123";"ABC123" |], [| "ABC3C10" |]))
+
+[<Test>]
+let ``Test16`` () =
+ Assert.AreEqual(112.7, ShoppingBag.CalculateBagTotal([| "ABC123";"BCD012" |], [| "ABC1P10";"BCD1C10" |]))
+
+[<Test>]
+let ``Test17`` () =
+ Assert.AreEqual(20, ShoppingBag.CalculateBagTotal([| "ABC005";"BCD020" |], [| "ABC1C10" |]))
+
+[<Test>]
+let ``Test18`` () =
+ Assert.AreEqual(180, ShoppingBag.CalculateBagTotal([| "ABC200" |], [| "ABC1C10";"ABC1C20" |]))
+
+[<Test>]
+let ``Test19`` () =
+ Assert.AreEqual(160, ShoppingBag.CalculateBagTotal([| "ABC200" |], [| "ABC1P10";"ABC1P20" |]))
+
+[<Test>]
+let ``Test20`` () =
+ Assert.AreEqual(180, ShoppingBag.CalculateBagTotal([| "ABC200" |], [| "ABC1C10";"ABC1P10" |]))
+
+[<Test>]
+let ``Test21`` () =
+ Assert.AreEqual(40, ShoppingBag.CalculateBagTotal([| "ABC050" |], [| "ABC1C10";"ABC1P10" |]))
+
+[<Test>]
+let ``Test22`` () =
+ Assert.AreEqual(400, ShoppingBag.CalculateBagTotal([| "ABC050";"BCD020";"BCD020";"ABC050";"BCD020";"CDE020";"EFG200";"EFG200" |], [| "ABC3C40";"ABC3P50";"ABC2P10";"BCD2C30";"ABC2C05";"ABC1P20";"ABC1C05";"DEF1C10";"EFG3C40";"EFG3P50";"EFG2P10";"EFG2C05";"EFG1P20";"EFG1C50" |]))
