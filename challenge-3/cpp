@@ -1,0 +1,79 @@
+#include "solution.hpp"
+#include <gtest/gtest.h>
+#include <vector>
+
+using namespace ::testing;
+using namespace ::std;
+
+TEST(SolutionTests, Test1)
+{
+    string config = "1:2;2:4;3.5:7;4:8";
+    string expected = "1:2;2:4;3.5:7;4:8";
+    ASSERT_EQ(expected, FixFuelConfig(config));
+}
+TEST(SolutionTests, Test2)
+{
+    string config = "1:1;2:5;3:3;4:6";
+    string expected = "KEEP_PREVIOUS";
+    ASSERT_EQ(expected, FixFuelConfig(config));
+}
+TEST(SolutionTests, Test3)
+{
+    string config = "1:1;1:2;3:3;4:4";
+    string expected = "KEEP_PREVIOUS";
+    ASSERT_EQ(expected, FixFuelConfig(config));
+}
+TEST(SolutionTests, Test4)
+{
+    string config = "1:1;2:2;3.5:3.5;4:5";
+    string expected = "1:1;2:2;3.5:3.5;4:4";
+    ASSERT_EQ(expected, FixFuelConfig(config));
+}
+TEST(SolutionTests, Test5)
+{
+    string config = "0:0;1:0;2:0;3:0";
+    string expected = "0:0;1:0;2:0;3:0";
+    ASSERT_EQ(expected, FixFuelConfig(config));
+}
+TEST(SolutionTests, Test6)
+{
+    string config = "5:1;10:2;2.5:12.5;12.5:2.5";
+    string expected = "5:1;10:2;2.5:0.5;12.5:2.5";
+    ASSERT_EQ(expected, FixFuelConfig(config));
+}
+TEST(SolutionTests, Test7)
+{
+    string config = "3:11;1:10;12.5:20.5;78:86";
+    string expected = "3:11;2:10;12.5:20.5;78:86";
+    ASSERT_EQ(expected, FixFuelConfig(config));
+}
+TEST(SolutionTests, Test8)
+{
+    string config = "1:100;2:2;3.5:3.5;4:4";
+    string expected = "1:1;2:2;3.5:3.5;4:4";
+    ASSERT_EQ(expected, FixFuelConfig(config));
+}
+TEST(SolutionTests, Test9)
+{
+    string config = "1:1;0:2;3.5:3.5;4:4";
+    string expected = "1:1;0:0;3.5:3.5;4:4";
+    ASSERT_EQ(expected, FixFuelConfig(config));
+}
+TEST(SolutionTests, Test10)
+{
+    string config = "1:1;2:2;70:35;4:5";
+    string expected = "1:1;2:2;70:70;4:4";
+    ASSERT_EQ(expected, FixFuelConfig(config));
+}
+TEST(SolutionTests, Test11)
+{
+    string config = "1:6;0.2:2;3.5:3.5;4:21";
+    string expected = "1:6;0.2:2;3.5:18.5;4:21";
+    ASSERT_EQ(expected, FixFuelConfig(config));
+}
+TEST(SolutionTests, Test12)
+{
+    string config = "5:1;10:2;1:3.5;12.5:2.5";
+    string expected = "5:1;10:2;1:0.2;12.5:2.5";
+    ASSERT_EQ(expected, FixFuelConfig(config));
+}

@@ -1,0 +1,54 @@
+require('./Solution.js');
+
+describe("SolutionTests", function() {
+
+    
+    it("Test1", function() {
+        expect(fixFuelConfig("1:2;2:4;3.5:7;4:8")).toEqual("1:2;2:4;3.5:7;4:8");
+    });
+
+    it("Test2", function() {
+        expect(fixFuelConfig("1:1;2:5;3:3;4:6")).toEqual("KEEP_PREVIOUS");
+    });
+
+    it("Test3", function() {
+        expect(fixFuelConfig("1:1;1:2;3:3;4:4")).toEqual("KEEP_PREVIOUS");
+    });
+
+    it("Test4", function() {
+        expect(fixFuelConfig("1:1;2:2;3.5:3.5;4:5")).toEqual("1:1;2:2;3.5:3.5;4:4");
+    });
+
+    it("Test5", function() {
+        expect(fixFuelConfig("0:0;1:0;2:0;3:0")).toEqual("0:0;1:0;2:0;3:0");
+    });
+
+    it("Test6", function() {
+        expect(fixFuelConfig("5:1;10:2;2.5:12.5;12.5:2.5")).toEqual("5:1;10:2;2.5:0.5;12.5:2.5");
+    });
+
+    it("Test7", function() {
+        expect(fixFuelConfig("3:11;1:10;12.5:20.5;78:86")).toEqual("3:11;2:10;12.5:20.5;78:86");
+    });
+
+    it("Test8", function() {
+        expect(fixFuelConfig("1:100;2:2;3.5:3.5;4:4")).toEqual("1:1;2:2;3.5:3.5;4:4");
+    });
+
+    it("Test9", function() {
+        expect(fixFuelConfig("1:1;0:2;3.5:3.5;4:4")).toEqual("1:1;0:0;3.5:3.5;4:4");
+    });
+
+    it("Test10", function() {
+        expect(fixFuelConfig("1:1;2:2;70:35;4:5")).toEqual("1:1;2:2;70:70;4:4");
+    });
+
+    it("Test11", function() {
+        expect(fixFuelConfig("1:6;0.2:2;3.5:3.5;4:21")).toEqual("1:6;0.2:2;3.5:18.5;4:21");
+    });
+
+    it("Test12", function() {
+        expect(fixFuelConfig("5:1;10:2;1:3.5;12.5:2.5")).toEqual("5:1;10:2;1:0.2;12.5:2.5");
+    });
+
+});

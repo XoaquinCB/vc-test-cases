@@ -1,0 +1,18 @@
+use strict;
+use warnings 'all';
+use Test::Simple qw( no_plan );
+
+require 'solution.perl';
+
+ok(FixFuelConfig("1:2;2:4;3.5:7;4:8") eq "1:2;2:4;3.5:7;4:8", 'Test1');
+ok(FixFuelConfig("1:1;2:5;3:3;4:6") eq "KEEP_PREVIOUS", 'Test2');
+ok(FixFuelConfig("1:1;1:2;3:3;4:4") eq "KEEP_PREVIOUS", 'Test3');
+ok(FixFuelConfig("1:1;2:2;3.5:3.5;4:5") eq "1:1;2:2;3.5:3.5;4:4", 'Test4');
+ok(FixFuelConfig("0:0;1:0;2:0;3:0") eq "0:0;1:0;2:0;3:0", 'Test5');
+ok(FixFuelConfig("5:1;10:2;2.5:12.5;12.5:2.5") eq "5:1;10:2;2.5:0.5;12.5:2.5", 'Test6');
+ok(FixFuelConfig("3:11;1:10;12.5:20.5;78:86") eq "3:11;2:10;12.5:20.5;78:86", 'Test7');
+ok(FixFuelConfig("1:100;2:2;3.5:3.5;4:4") eq "1:1;2:2;3.5:3.5;4:4", 'Test8');
+ok(FixFuelConfig("1:1;0:2;3.5:3.5;4:4") eq "1:1;0:0;3.5:3.5;4:4", 'Test9');
+ok(FixFuelConfig("1:1;2:2;70:35;4:5") eq "1:1;2:2;70:70;4:4", 'Test10');
+ok(FixFuelConfig("1:6;0.2:2;3.5:3.5;4:21") eq "1:6;0.2:2;3.5:18.5;4:21", 'Test11');
+ok(FixFuelConfig("5:1;10:2;1:3.5;12.5:2.5") eq "5:1;10:2;1:0.2;12.5:2.5", 'Test12');

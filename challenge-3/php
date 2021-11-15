@@ -1,0 +1,69 @@
+<?php
+
+require_once 'Solution.php';
+
+class SolutionTest extends PHPUnit_Framework_TestCase
+{
+    
+    public function test1() 
+    {
+        $this->assertSame("1:2;2:4;3.5:7;4:8", fixFuelConfig("1:2;2:4;3.5:7;4:8"));    
+    }
+    
+    public function test2() 
+    {
+        $this->assertSame("KEEP_PREVIOUS", fixFuelConfig("1:1;2:5;3:3;4:6"));    
+    }
+    
+    public function test3() 
+    {
+        $this->assertSame("KEEP_PREVIOUS", fixFuelConfig("1:1;1:2;3:3;4:4"));    
+    }
+    
+    public function test4() 
+    {
+        $this->assertSame("1:1;2:2;3.5:3.5;4:4", fixFuelConfig("1:1;2:2;3.5:3.5;4:5"));    
+    }
+    
+    public function test5() 
+    {
+        $this->assertSame("0:0;1:0;2:0;3:0", fixFuelConfig("0:0;1:0;2:0;3:0"));    
+    }
+    
+    public function test6() 
+    {
+        $this->assertSame("5:1;10:2;2.5:0.5;12.5:2.5", fixFuelConfig("5:1;10:2;2.5:12.5;12.5:2.5"));    
+    }
+    
+    public function test7() 
+    {
+        $this->assertSame("3:11;2:10;12.5:20.5;78:86", fixFuelConfig("3:11;1:10;12.5:20.5;78:86"));    
+    }
+    
+    public function test8() 
+    {
+        $this->assertSame("1:1;2:2;3.5:3.5;4:4", fixFuelConfig("1:100;2:2;3.5:3.5;4:4"));    
+    }
+    
+    public function test9() 
+    {
+        $this->assertSame("1:1;0:0;3.5:3.5;4:4", fixFuelConfig("1:1;0:2;3.5:3.5;4:4"));    
+    }
+    
+    public function test10() 
+    {
+        $this->assertSame("1:1;2:2;70:70;4:4", fixFuelConfig("1:1;2:2;70:35;4:5"));    
+    }
+    
+    public function test11() 
+    {
+        $this->assertSame("1:6;0.2:2;3.5:18.5;4:21", fixFuelConfig("1:6;0.2:2;3.5:3.5;4:21"));    
+    }
+    
+    public function test12() 
+    {
+        $this->assertSame("5:1;10:2;1:0.2;12.5:2.5", fixFuelConfig("5:1;10:2;1:3.5;12.5:2.5"));    
+    }
+}
+
+?>

@@ -1,0 +1,112 @@
+package Solution
+
+import ("testing")
+
+func Test_1(t *testing.T) {
+    config := "1:2;2:4;3.5:7;4:8"
+    expected := "1:2;2:4;3.5:7;4:8"
+    output := FixFuelConfig(config)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_2(t *testing.T) {
+    config := "1:1;2:5;3:3;4:6"
+    expected := "KEEP_PREVIOUS"
+    output := FixFuelConfig(config)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_3(t *testing.T) {
+    config := "1:1;1:2;3:3;4:4"
+    expected := "KEEP_PREVIOUS"
+    output := FixFuelConfig(config)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_4(t *testing.T) {
+    config := "1:1;2:2;3.5:3.5;4:5"
+    expected := "1:1;2:2;3.5:3.5;4:4"
+    output := FixFuelConfig(config)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_5(t *testing.T) {
+    config := "0:0;1:0;2:0;3:0"
+    expected := "0:0;1:0;2:0;3:0"
+    output := FixFuelConfig(config)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_6(t *testing.T) {
+    config := "5:1;10:2;2.5:12.5;12.5:2.5"
+    expected := "5:1;10:2;2.5:0.5;12.5:2.5"
+    output := FixFuelConfig(config)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_7(t *testing.T) {
+    config := "3:11;1:10;12.5:20.5;78:86"
+    expected := "3:11;2:10;12.5:20.5;78:86"
+    output := FixFuelConfig(config)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_8(t *testing.T) {
+    config := "1:100;2:2;3.5:3.5;4:4"
+    expected := "1:1;2:2;3.5:3.5;4:4"
+    output := FixFuelConfig(config)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_9(t *testing.T) {
+    config := "1:1;0:2;3.5:3.5;4:4"
+    expected := "1:1;0:0;3.5:3.5;4:4"
+    output := FixFuelConfig(config)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_10(t *testing.T) {
+    config := "1:1;2:2;70:35;4:5"
+    expected := "1:1;2:2;70:70;4:4"
+    output := FixFuelConfig(config)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_11(t *testing.T) {
+    config := "1:6;0.2:2;3.5:3.5;4:21"
+    expected := "1:6;0.2:2;3.5:18.5;4:21"
+    output := FixFuelConfig(config)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_12(t *testing.T) {
+    config := "5:1;10:2;1:3.5;12.5:2.5"
+    expected := "5:1;10:2;1:0.2;12.5:2.5"
+    output := FixFuelConfig(config)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}

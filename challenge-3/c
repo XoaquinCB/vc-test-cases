@@ -1,0 +1,132 @@
+#include "solution.h"
+#include "unity.h"
+#include <stdbool.h>
+
+void setUp(void)
+{
+}
+
+void tearDown(void)
+{
+}
+
+
+void test1(void)
+{
+    char* config = "1:2;2:4;3.5:7;4:8";
+    char* expected = "1:2;2:4;3.5:7;4:8";
+
+    char* output = FixFuelConfig(config);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test2(void)
+{
+    char* config = "1:1;2:5;3:3;4:6";
+    char* expected = "KEEP_PREVIOUS";
+
+    char* output = FixFuelConfig(config);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test3(void)
+{
+    char* config = "1:1;1:2;3:3;4:4";
+    char* expected = "KEEP_PREVIOUS";
+
+    char* output = FixFuelConfig(config);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test4(void)
+{
+    char* config = "1:1;2:2;3.5:3.5;4:5";
+    char* expected = "1:1;2:2;3.5:3.5;4:4";
+
+    char* output = FixFuelConfig(config);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test5(void)
+{
+    char* config = "0:0;1:0;2:0;3:0";
+    char* expected = "0:0;1:0;2:0;3:0";
+
+    char* output = FixFuelConfig(config);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test6(void)
+{
+    char* config = "5:1;10:2;2.5:12.5;12.5:2.5";
+    char* expected = "5:1;10:2;2.5:0.5;12.5:2.5";
+
+    char* output = FixFuelConfig(config);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test7(void)
+{
+    char* config = "3:11;1:10;12.5:20.5;78:86";
+    char* expected = "3:11;2:10;12.5:20.5;78:86";
+
+    char* output = FixFuelConfig(config);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test8(void)
+{
+    char* config = "1:100;2:2;3.5:3.5;4:4";
+    char* expected = "1:1;2:2;3.5:3.5;4:4";
+
+    char* output = FixFuelConfig(config);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test9(void)
+{
+    char* config = "1:1;0:2;3.5:3.5;4:4";
+    char* expected = "1:1;0:0;3.5:3.5;4:4";
+
+    char* output = FixFuelConfig(config);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test10(void)
+{
+    char* config = "1:1;2:2;70:35;4:5";
+    char* expected = "1:1;2:2;70:70;4:4";
+
+    char* output = FixFuelConfig(config);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test11(void)
+{
+    char* config = "1:6;0.2:2;3.5:3.5;4:21";
+    char* expected = "1:6;0.2:2;3.5:18.5;4:21";
+
+    char* output = FixFuelConfig(config);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test12(void)
+{
+    char* config = "5:1;10:2;1:3.5;12.5:2.5";
+    char* expected = "5:1;10:2;1:0.2;12.5:2.5";
+
+    char* output = FixFuelConfig(config);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
