@@ -1,0 +1,89 @@
+Imports System
+Imports System.Collections.Generic
+Imports NUnit.Framework
+
+<TestFixture()> _
+Public Class SolutionTests
+
+    
+    <Test()> _
+    Public Sub Test1()
+
+        Dim solution As Solution = New Solution()
+        Assert.AreEqual(4, solution.NumberOfDaysToSave(8))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test2()
+
+        Dim solution As Solution = New Solution()
+        Assert.AreEqual(10, solution.NumberOfDaysToSave(36))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test3()
+
+        Dim solution As Solution = New Solution()
+        Assert.AreEqual(0, solution.NumberOfDaysToSave(0))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test4()
+
+        Dim solution As Solution = New Solution()
+        Assert.AreEqual(13, solution.NumberOfDaysToSave(55))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test5()
+
+        Dim solution As Solution = New Solution()
+        Assert.AreEqual(14, solution.NumberOfDaysToSave(56))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test6()
+
+        Dim solution As Solution = New Solution()
+        Assert.AreEqual(999, solution.NumberOfDaysToSave(74778))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test7()
+
+        Dim solution As Solution = New Solution()
+        Assert.AreEqual(1000, solution.NumberOfDaysToSave(74779))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test8()
+
+        Dim solution As Solution = New Solution()
+        Assert.AreEqual(665, solution.NumberOfDaysToSave(33900))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test9()
+
+        Dim solution As Solution = New Solution()
+        Assert.AreEqual(-1, solution.NumberOfDaysToSave(74927))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test10()
+
+        Dim solution As Solution = New Solution()
+        Assert.AreEqual(-1, solution.NumberOfDaysToSave(-1))
+
+    End Sub
+
+End Class

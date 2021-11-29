@@ -1,0 +1,86 @@
+import org.scalatest.FunSuite
+
+class TestSuite extends FunSuite {
+
+    
+    test("test-1") {
+
+        val instance = new Solution
+
+        assert(instance.numberOfDaysToSave(8) === (4))
+
+    }
+    
+    test("test-2") {
+
+        val instance = new Solution
+
+        assert(instance.numberOfDaysToSave(36) === (10))
+
+    }
+    
+    test("test-3") {
+
+        val instance = new Solution
+
+        assert(instance.numberOfDaysToSave(0) === (0))
+
+    }
+    
+    test("test-4") {
+
+        val instance = new Solution
+
+        assert(instance.numberOfDaysToSave(55) === (13))
+
+    }
+    
+    test("test-5") {
+
+        val instance = new Solution
+
+        assert(instance.numberOfDaysToSave(56) === (14))
+
+    }
+    
+    test("test-6") {
+
+        val instance = new Solution
+
+        assert(instance.numberOfDaysToSave(74778) === (999))
+
+    }
+    
+    test("test-7") {
+
+        val instance = new Solution
+
+        assert(instance.numberOfDaysToSave(74779) === (1000))
+
+    }
+    
+    test("test-8") {
+
+        val instance = new Solution
+
+        assert(instance.numberOfDaysToSave(33900) === (665))
+
+    }
+    
+    test("test-9") {
+
+        val instance = new Solution
+
+        assert(instance.numberOfDaysToSave(74927) === (-1))
+
+    }
+    
+    test("test-10") {
+
+        val instance = new Solution
+
+        assert(instance.numberOfDaysToSave(-1) === (-1))
+
+    }
+
+}

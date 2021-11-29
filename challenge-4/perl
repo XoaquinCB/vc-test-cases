@@ -1,0 +1,16 @@
+use strict;
+use warnings 'all';
+use Test::Simple qw( no_plan );
+
+require 'solution.perl';
+
+ok(NumberOfDaysToSave(8) eq 4, 'Test1');
+ok(NumberOfDaysToSave(36) eq 10, 'Test2');
+ok(NumberOfDaysToSave(0) eq 0, 'Test3');
+ok(NumberOfDaysToSave(55) eq 13, 'Test4');
+ok(NumberOfDaysToSave(56) eq 14, 'Test5');
+ok(NumberOfDaysToSave(74778) eq 999, 'Test6');
+ok(NumberOfDaysToSave(74779) eq 1000, 'Test7');
+ok(NumberOfDaysToSave(33900) eq 665, 'Test8');
+ok(NumberOfDaysToSave(74927) eq -1, 'Test9');
+ok(NumberOfDaysToSave(-1) eq -1, 'Test10');

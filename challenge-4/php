@@ -1,0 +1,59 @@
+<?php
+
+require_once 'Solution.php';
+
+class SolutionTest extends PHPUnit_Framework_TestCase
+{
+    
+    public function test1() 
+    {
+        $this->assertSame(4, numberOfDaysToSave(8));    
+    }
+    
+    public function test2() 
+    {
+        $this->assertSame(10, numberOfDaysToSave(36));    
+    }
+    
+    public function test3() 
+    {
+        $this->assertSame(0, numberOfDaysToSave(0));    
+    }
+    
+    public function test4() 
+    {
+        $this->assertSame(13, numberOfDaysToSave(55));    
+    }
+    
+    public function test5() 
+    {
+        $this->assertSame(14, numberOfDaysToSave(56));    
+    }
+    
+    public function test6() 
+    {
+        $this->assertSame(999, numberOfDaysToSave(74778));    
+    }
+    
+    public function test7() 
+    {
+        $this->assertSame(1000, numberOfDaysToSave(74779));    
+    }
+    
+    public function test8() 
+    {
+        $this->assertSame(665, numberOfDaysToSave(33900));    
+    }
+    
+    public function test9() 
+    {
+        $this->assertSame(-1, numberOfDaysToSave(74927));    
+    }
+    
+    public function test10() 
+    {
+        $this->assertSame(-1, numberOfDaysToSave(-1));    
+    }
+}
+
+?>

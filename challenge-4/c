@@ -1,0 +1,112 @@
+#include "solution.h"
+#include "unity.h"
+#include <stdbool.h>
+
+void setUp(void)
+{
+}
+
+void tearDown(void)
+{
+}
+
+
+void test1(void)
+{
+    int moneySaved = 8;
+    int expected = 4;
+
+    int output = NumberOfDaysToSave(moneySaved);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test2(void)
+{
+    int moneySaved = 36;
+    int expected = 10;
+
+    int output = NumberOfDaysToSave(moneySaved);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test3(void)
+{
+    int moneySaved = 0;
+    int expected = 0;
+
+    int output = NumberOfDaysToSave(moneySaved);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test4(void)
+{
+    int moneySaved = 55;
+    int expected = 13;
+
+    int output = NumberOfDaysToSave(moneySaved);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test5(void)
+{
+    int moneySaved = 56;
+    int expected = 14;
+
+    int output = NumberOfDaysToSave(moneySaved);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test6(void)
+{
+    int moneySaved = 74778;
+    int expected = 999;
+
+    int output = NumberOfDaysToSave(moneySaved);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test7(void)
+{
+    int moneySaved = 74779;
+    int expected = 1000;
+
+    int output = NumberOfDaysToSave(moneySaved);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test8(void)
+{
+    int moneySaved = 33900;
+    int expected = 665;
+
+    int output = NumberOfDaysToSave(moneySaved);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test9(void)
+{
+    int moneySaved = 74927;
+    int expected = -1;
+
+    int output = NumberOfDaysToSave(moneySaved);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}
+
+void test10(void)
+{
+    int moneySaved = -1;
+    int expected = -1;
+
+    int output = NumberOfDaysToSave(moneySaved);
+
+    TEST_ASSERT_EQUAL(expected, output);
+}

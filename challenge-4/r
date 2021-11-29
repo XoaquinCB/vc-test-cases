@@ -1,0 +1,25 @@
+library(RUnit)
+source('solution.R')
+
+
+checkEquals(4, numberOfDaysToSave(8));
+
+checkEquals(10, numberOfDaysToSave(36));
+
+checkEquals(0, numberOfDaysToSave(0));
+
+checkEquals(13, numberOfDaysToSave(55));
+
+checkEquals(14, numberOfDaysToSave(56));
+
+checkEquals(999, numberOfDaysToSave(74778));
+
+checkEquals(1000, numberOfDaysToSave(74779));
+
+checkEquals(665, numberOfDaysToSave(33900));
+
+checkEquals(-1, numberOfDaysToSave(74927));
+
+checkEquals(-1, numberOfDaysToSave(-1));
+
+print('All tests passed')

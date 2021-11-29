@@ -1,0 +1,88 @@
+using System;
+using System.Collections.Generic;
+using NUnit.Framework;
+
+[TestFixture]
+public class SolutionTests
+{
+    
+    [Test]
+    public void Test1()
+    {
+        var solution = new Solution();
+
+        Assert.AreEqual(4, solution.NumberOfDaysToSave(8));
+    }
+    
+    [Test]
+    public void Test2()
+    {
+        var solution = new Solution();
+
+        Assert.AreEqual(10, solution.NumberOfDaysToSave(36));
+    }
+    
+    [Test]
+    public void Test3()
+    {
+        var solution = new Solution();
+
+        Assert.AreEqual(0, solution.NumberOfDaysToSave(0));
+    }
+    
+    [Test]
+    public void Test4()
+    {
+        var solution = new Solution();
+
+        Assert.AreEqual(13, solution.NumberOfDaysToSave(55));
+    }
+    
+    [Test]
+    public void Test5()
+    {
+        var solution = new Solution();
+
+        Assert.AreEqual(14, solution.NumberOfDaysToSave(56));
+    }
+    
+    [Test]
+    public void Test6()
+    {
+        var solution = new Solution();
+
+        Assert.AreEqual(999, solution.NumberOfDaysToSave(74778));
+    }
+    
+    [Test]
+    public void Test7()
+    {
+        var solution = new Solution();
+
+        Assert.AreEqual(1000, solution.NumberOfDaysToSave(74779));
+    }
+    
+    [Test]
+    public void Test8()
+    {
+        var solution = new Solution();
+
+        Assert.AreEqual(665, solution.NumberOfDaysToSave(33900));
+    }
+    
+    [Test]
+    public void Test9()
+    {
+        var solution = new Solution();
+
+        Assert.AreEqual(-1, solution.NumberOfDaysToSave(74927));
+    }
+    
+    [Test]
+    public void Test10()
+    {
+        var solution = new Solution();
+
+        Assert.AreEqual(-1, solution.NumberOfDaysToSave(-1));
+    }
+}

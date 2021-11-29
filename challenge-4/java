@@ -1,0 +1,86 @@
+import org.junit.*;
+import static org.junit.Assert.*;
+
+public class Tests
+{
+    
+    @Test
+    public void test1()
+    {
+        Solution solution = new Solution();
+
+        assertEquals(4, solution.numberOfDaysToSave(8));
+    }
+    
+    @Test
+    public void test2()
+    {
+        Solution solution = new Solution();
+
+        assertEquals(10, solution.numberOfDaysToSave(36));
+    }
+    
+    @Test
+    public void test3()
+    {
+        Solution solution = new Solution();
+
+        assertEquals(0, solution.numberOfDaysToSave(0));
+    }
+    
+    @Test
+    public void test4()
+    {
+        Solution solution = new Solution();
+
+        assertEquals(13, solution.numberOfDaysToSave(55));
+    }
+    
+    @Test
+    public void test5()
+    {
+        Solution solution = new Solution();
+
+        assertEquals(14, solution.numberOfDaysToSave(56));
+    }
+    
+    @Test
+    public void test6()
+    {
+        Solution solution = new Solution();
+
+        assertEquals(999, solution.numberOfDaysToSave(74778));
+    }
+    
+    @Test
+    public void test7()
+    {
+        Solution solution = new Solution();
+
+        assertEquals(1000, solution.numberOfDaysToSave(74779));
+    }
+    
+    @Test
+    public void test8()
+    {
+        Solution solution = new Solution();
+
+        assertEquals(665, solution.numberOfDaysToSave(33900));
+    }
+    
+    @Test
+    public void test9()
+    {
+        Solution solution = new Solution();
+
+        assertEquals(-1, solution.numberOfDaysToSave(74927));
+    }
+    
+    @Test
+    public void test10()
+    {
+        Solution solution = new Solution();
+
+        assertEquals(-1, solution.numberOfDaysToSave(-1));
+    }
+}

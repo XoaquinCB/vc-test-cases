@@ -1,0 +1,46 @@
+require('./Solution.js');
+
+describe("SolutionTests", function() {
+
+    
+    it("Test1", function() {
+        expect(numberOfDaysToSave(8)).toEqual(4);
+    });
+
+    it("Test2", function() {
+        expect(numberOfDaysToSave(36)).toEqual(10);
+    });
+
+    it("Test3", function() {
+        expect(numberOfDaysToSave(0)).toEqual(0);
+    });
+
+    it("Test4", function() {
+        expect(numberOfDaysToSave(55)).toEqual(13);
+    });
+
+    it("Test5", function() {
+        expect(numberOfDaysToSave(56)).toEqual(14);
+    });
+
+    it("Test6", function() {
+        expect(numberOfDaysToSave(74778)).toEqual(999);
+    });
+
+    it("Test7", function() {
+        expect(numberOfDaysToSave(74779)).toEqual(1000);
+    });
+
+    it("Test8", function() {
+        expect(numberOfDaysToSave(33900)).toEqual(665);
+    });
+
+    it("Test9", function() {
+        expect(numberOfDaysToSave(74927)).toEqual(-1);
+    });
+
+    it("Test10", function() {
+        expect(numberOfDaysToSave(-1)).toEqual(-1);
+    });
+
+});

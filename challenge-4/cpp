@@ -1,0 +1,67 @@
+#include "solution.hpp"
+#include <gtest/gtest.h>
+#include <vector>
+
+using namespace ::testing;
+using namespace ::std;
+
+TEST(SolutionTests, Test1)
+{
+    int moneySaved = 8;
+    int expected = 4;
+    ASSERT_EQ(expected, NumberOfDaysToSave(moneySaved));
+}
+TEST(SolutionTests, Test2)
+{
+    int moneySaved = 36;
+    int expected = 10;
+    ASSERT_EQ(expected, NumberOfDaysToSave(moneySaved));
+}
+TEST(SolutionTests, Test3)
+{
+    int moneySaved = 0;
+    int expected = 0;
+    ASSERT_EQ(expected, NumberOfDaysToSave(moneySaved));
+}
+TEST(SolutionTests, Test4)
+{
+    int moneySaved = 55;
+    int expected = 13;
+    ASSERT_EQ(expected, NumberOfDaysToSave(moneySaved));
+}
+TEST(SolutionTests, Test5)
+{
+    int moneySaved = 56;
+    int expected = 14;
+    ASSERT_EQ(expected, NumberOfDaysToSave(moneySaved));
+}
+TEST(SolutionTests, Test6)
+{
+    int moneySaved = 74778;
+    int expected = 999;
+    ASSERT_EQ(expected, NumberOfDaysToSave(moneySaved));
+}
+TEST(SolutionTests, Test7)
+{
+    int moneySaved = 74779;
+    int expected = 1000;
+    ASSERT_EQ(expected, NumberOfDaysToSave(moneySaved));
+}
+TEST(SolutionTests, Test8)
+{
+    int moneySaved = 33900;
+    int expected = 665;
+    ASSERT_EQ(expected, NumberOfDaysToSave(moneySaved));
+}
+TEST(SolutionTests, Test9)
+{
+    int moneySaved = 74927;
+    int expected = -1;
+    ASSERT_EQ(expected, NumberOfDaysToSave(moneySaved));
+}
+TEST(SolutionTests, Test10)
+{
+    int moneySaved = -1;
+    int expected = -1;
+    ASSERT_EQ(expected, NumberOfDaysToSave(moneySaved));
+}

@@ -1,0 +1,94 @@
+package Solution
+
+import ("testing")
+
+func Test_1(t *testing.T) {
+    moneySaved := 8
+    expected := 4
+    output := NumberOfDaysToSave(moneySaved)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_2(t *testing.T) {
+    moneySaved := 36
+    expected := 10
+    output := NumberOfDaysToSave(moneySaved)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_3(t *testing.T) {
+    moneySaved := 0
+    expected := 0
+    output := NumberOfDaysToSave(moneySaved)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_4(t *testing.T) {
+    moneySaved := 55
+    expected := 13
+    output := NumberOfDaysToSave(moneySaved)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_5(t *testing.T) {
+    moneySaved := 56
+    expected := 14
+    output := NumberOfDaysToSave(moneySaved)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_6(t *testing.T) {
+    moneySaved := 74778
+    expected := 999
+    output := NumberOfDaysToSave(moneySaved)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_7(t *testing.T) {
+    moneySaved := 74779
+    expected := 1000
+    output := NumberOfDaysToSave(moneySaved)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_8(t *testing.T) {
+    moneySaved := 33900
+    expected := 665
+    output := NumberOfDaysToSave(moneySaved)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_9(t *testing.T) {
+    moneySaved := 74927
+    expected := -1
+    output := NumberOfDaysToSave(moneySaved)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_10(t *testing.T) {
+    moneySaved := -1
+    expected := -1
+    output := NumberOfDaysToSave(moneySaved)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
