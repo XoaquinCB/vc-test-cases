@@ -1,0 +1,152 @@
+import XCTest
+
+class SolutionTests: XCTestCase {
+    
+    func test_1() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!"), ["VISA", "This is a secret but my card number is *************! Shhhh! Don't tell anyone!"])
+    }
+    
+    func test_2() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "123-5200000000000000-123 oops! Don't read that!!"), ["MASTERCARD", "123-****************-123 oops! Don't read that!!"])
+    }
+    
+    func test_3() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "5300000000000000123456789"), ["MASTERCARD", "****************123456789"])
+    }
+    
+    func test_4() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "987675400000000000000"), ["MASTERCARD", "98767****************"])
+    }
+    
+    func test_5() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "370000000000000"), ["AMEX", "***************"])
+    }
+    
+    func test_6() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "15986700000000000000075670987654321"), ["NONE", "15986700000000000000075670987654321"])
+    }
+    
+    func test_7() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "No private data here!"), ["NONE", "No private data here!"])
+    }
+    
+    func test_8() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "blah blah blah blah 5100000000000000 blah blah blah"), ["MASTERCARD", "blah blah blah blah **************** blah blah blah"])
+    }
+    
+    func test_9() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "secret secrets: 340000000000000"), ["AMEX", "secret secrets: ***************"])
+    }
+    
+    func test_10() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "dont read this -> 4111111111111 <- no! stop!"), ["VISA", "dont read this -> ************* <- no! stop!"])
+    }
+    
+    func test_11() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "598241111111111104454"), ["VISA", "5982*************4454"])
+    }
+    
+    func test_12() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "22254121212121212123333"), ["MASTERCARD", "222****************3333"])
+    }
+    
+    func test_13() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "11111111113434343434343431111111111"), ["AMEX", "1111111111***************1111111111"])
+    }
+    
+    func test_14() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: ""), ["NONE", ""])
+    }
+    
+    func test_15() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: " "), ["NONE", " "])
+    }
+    
+    func test_16() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "4111111111110 and 4111111111112"), ["VISA", "VISA", "************* and *************"])
+    }
+    
+    func test_17() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "343434343434343 and 343434343434344 and 343434343434345"), ["AMEX", "AMEX", "AMEX", "*************** and *************** and ***************"])
+    }
+    
+    func test_18() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "5111111111111111 and 5111111111111112 and 5111111111111113"), ["MASTERCARD", "MASTERCARD", "MASTERCARD", "**************** and **************** and ****************"])
+    }
+    
+    func test_19() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "5111111111111111 and 343434343434343"), ["MASTERCARD", "AMEX", "**************** and ***************"])
+    }
+    
+    func test_20() {
+        let solution = Arti()
+        XCTAssertEqual(solution.redactCardDetails(message: "5111111111111111 and 343434343434343 and 4111111111111"), ["MASTERCARD", "AMEX", "VISA", "**************** and *************** and *************"])
+    }
+
+}
+
+extension ArtiTests {
+    static var allTests : [(String, (ArtiTests) -> () throws -> Void)] {
+        return [
+            
+            ("test_1", test_1),
+            
+            ("test_2", test_2),
+            
+            ("test_3", test_3),
+            
+            ("test_4", test_4),
+            
+            ("test_5", test_5),
+            
+            ("test_6", test_6),
+            
+            ("test_7", test_7),
+            
+            ("test_8", test_8),
+            
+            ("test_9", test_9),
+            
+            ("test_10", test_10),
+            
+            ("test_11", test_11),
+            
+            ("test_12", test_12),
+            
+            ("test_13", test_13),
+            
+            ("test_14", test_14),
+            
+            ("test_15", test_15),
+            
+            ("test_16", test_16),
+            
+            ("test_17", test_17),
+            
+            ("test_18", test_18),
+            
+            ("test_19", test_19),
+            
+            ("test_20", test_20),
+        ]
+    }
+}

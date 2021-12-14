@@ -1,0 +1,267 @@
+#include "solution.hpp"
+#include <gtest/gtest.h>
+#include <vector>
+
+using namespace ::testing;
+using namespace ::std;
+
+
+TEST(ArtiTests, Test1)
+{
+    string message = "This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!";
+    vector<string> expected = { "VISA", "This is a secret but my card number is *************! Shhhh! Don't tell anyone!" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test2)
+{
+    string message = "123-5200000000000000-123 oops! Don't read that!!";
+    vector<string> expected = { "MASTERCARD", "123-****************-123 oops! Don't read that!!" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test3)
+{
+    string message = "5300000000000000123456789";
+    vector<string> expected = { "MASTERCARD", "****************123456789" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test4)
+{
+    string message = "987675400000000000000";
+    vector<string> expected = { "MASTERCARD", "98767****************" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test5)
+{
+    string message = "370000000000000";
+    vector<string> expected = { "AMEX", "***************" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test6)
+{
+    string message = "15986700000000000000075670987654321";
+    vector<string> expected = { "NONE", "15986700000000000000075670987654321" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test7)
+{
+    string message = "No private data here!";
+    vector<string> expected = { "NONE", "No private data here!" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test8)
+{
+    string message = "blah blah blah blah 5100000000000000 blah blah blah";
+    vector<string> expected = { "MASTERCARD", "blah blah blah blah **************** blah blah blah" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test9)
+{
+    string message = "secret secrets: 340000000000000";
+    vector<string> expected = { "AMEX", "secret secrets: ***************" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test10)
+{
+    string message = "dont read this -> 4111111111111 <- no! stop!";
+    vector<string> expected = { "VISA", "dont read this -> ************* <- no! stop!" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test11)
+{
+    string message = "598241111111111104454";
+    vector<string> expected = { "VISA", "5982*************4454" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test12)
+{
+    string message = "22254121212121212123333";
+    vector<string> expected = { "MASTERCARD", "222****************3333" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test13)
+{
+    string message = "11111111113434343434343431111111111";
+    vector<string> expected = { "AMEX", "1111111111***************1111111111" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test14)
+{
+    string message = "";
+    vector<string> expected = { "NONE", "" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test15)
+{
+    string message = " ";
+    vector<string> expected = { "NONE", " " };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test16)
+{
+    string message = "4111111111110 and 4111111111112";
+    vector<string> expected = { "VISA", "VISA", "************* and *************" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test17)
+{
+    string message = "343434343434343 and 343434343434344 and 343434343434345";
+    vector<string> expected = { "AMEX", "AMEX", "AMEX", "*************** and *************** and ***************" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test18)
+{
+    string message = "5111111111111111 and 5111111111111112 and 5111111111111113";
+    vector<string> expected = { "MASTERCARD", "MASTERCARD", "MASTERCARD", "**************** and **************** and ****************" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test19)
+{
+    string message = "5111111111111111 and 343434343434343";
+    vector<string> expected = { "MASTERCARD", "AMEX", "**************** and ***************" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}
+
+TEST(ArtiTests, Test20)
+{
+    string message = "5111111111111111 and 343434343434343 and 4111111111111";
+    vector<string> expected = { "MASTERCARD", "AMEX", "VISA", "**************** and *************** and *************" };
+    vector<string> output = RedactCardDetails(message);
+    int expectedSize = expected.size();
+    int outputSize = output.size();
+    int maxSize = (expectedSize < outputSize) ? outputSize : expectedSize;
+
+    for(int i = 0; i < maxSize; i++)
+        ASSERT_EQ(expected[i], output[i]);
+}

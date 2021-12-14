@@ -1,0 +1,86 @@
+require('./Solution.js');
+
+describe("ArtiTests", function() {
+
+    
+    it("Test1", function() {
+        expect(redactCardDetails("This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!")).toEqual([ "VISA", "This is a secret but my card number is *************! Shhhh! Don't tell anyone!" ]);
+    });
+
+    it("Test2", function() {
+        expect(redactCardDetails("123-5200000000000000-123 oops! Don't read that!!")).toEqual([ "MASTERCARD", "123-****************-123 oops! Don't read that!!" ]);
+    });
+
+    it("Test3", function() {
+        expect(redactCardDetails("5300000000000000123456789")).toEqual([ "MASTERCARD", "****************123456789" ]);
+    });
+
+    it("Test4", function() {
+        expect(redactCardDetails("987675400000000000000")).toEqual([ "MASTERCARD", "98767****************" ]);
+    });
+
+    it("Test5", function() {
+        expect(redactCardDetails("370000000000000")).toEqual([ "AMEX", "***************" ]);
+    });
+
+    it("Test6", function() {
+        expect(redactCardDetails("15986700000000000000075670987654321")).toEqual([ "NONE", "15986700000000000000075670987654321" ]);
+    });
+
+    it("Test7", function() {
+        expect(redactCardDetails("No private data here!")).toEqual([ "NONE", "No private data here!" ]);
+    });
+
+    it("Test8", function() {
+        expect(redactCardDetails("blah blah blah blah 5100000000000000 blah blah blah")).toEqual([ "MASTERCARD", "blah blah blah blah **************** blah blah blah" ]);
+    });
+
+    it("Test9", function() {
+        expect(redactCardDetails("secret secrets: 340000000000000")).toEqual([ "AMEX", "secret secrets: ***************" ]);
+    });
+
+    it("Test10", function() {
+        expect(redactCardDetails("dont read this -> 4111111111111 <- no! stop!")).toEqual([ "VISA", "dont read this -> ************* <- no! stop!" ]);
+    });
+
+    it("Test11", function() {
+        expect(redactCardDetails("598241111111111104454")).toEqual([ "VISA", "5982*************4454" ]);
+    });
+
+    it("Test12", function() {
+        expect(redactCardDetails("22254121212121212123333")).toEqual([ "MASTERCARD", "222****************3333" ]);
+    });
+
+    it("Test13", function() {
+        expect(redactCardDetails("11111111113434343434343431111111111")).toEqual([ "AMEX", "1111111111***************1111111111" ]);
+    });
+
+    it("Test14", function() {
+        expect(redactCardDetails("")).toEqual([ "NONE", "" ]);
+    });
+
+    it("Test15", function() {
+        expect(redactCardDetails(" ")).toEqual([ "NONE", " " ]);
+    });
+
+    it("Test16", function() {
+        expect(redactCardDetails("4111111111110 and 4111111111112")).toEqual([ "VISA", "VISA", "************* and *************" ]);
+    });
+
+    it("Test17", function() {
+        expect(redactCardDetails("343434343434343 and 343434343434344 and 343434343434345")).toEqual([ "AMEX", "AMEX", "AMEX", "*************** and *************** and ***************" ]);
+    });
+
+    it("Test18", function() {
+        expect(redactCardDetails("5111111111111111 and 5111111111111112 and 5111111111111113")).toEqual([ "MASTERCARD", "MASTERCARD", "MASTERCARD", "**************** and **************** and ****************" ]);
+    });
+
+    it("Test19", function() {
+        expect(redactCardDetails("5111111111111111 and 343434343434343")).toEqual([ "MASTERCARD", "AMEX", "**************** and ***************" ]);
+    });
+
+    it("Test20", function() {
+        expect(redactCardDetails("5111111111111111 and 343434343434343 and 4111111111111")).toEqual([ "MASTERCARD", "AMEX", "VISA", "**************** and *************** and *************" ]);
+    });
+
+});

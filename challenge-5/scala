@@ -1,0 +1,166 @@
+import org.scalatest.FunSuite
+
+class TestSuite extends FunSuite {
+
+    
+    test("test-1") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!") === (Array[String]("VISA", "This is a secret but my card number is *************! Shhhh! Don't tell anyone!")))
+
+    }
+    
+    test("test-2") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("123-5200000000000000-123 oops! Don't read that!!") === (Array[String]("MASTERCARD", "123-****************-123 oops! Don't read that!!")))
+
+    }
+    
+    test("test-3") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("5300000000000000123456789") === (Array[String]("MASTERCARD", "****************123456789")))
+
+    }
+    
+    test("test-4") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("987675400000000000000") === (Array[String]("MASTERCARD", "98767****************")))
+
+    }
+    
+    test("test-5") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("370000000000000") === (Array[String]("AMEX", "***************")))
+
+    }
+    
+    test("test-6") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("15986700000000000000075670987654321") === (Array[String]("NONE", "15986700000000000000075670987654321")))
+
+    }
+    
+    test("test-7") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("No private data here!") === (Array[String]("NONE", "No private data here!")))
+
+    }
+    
+    test("test-8") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("blah blah blah blah 5100000000000000 blah blah blah") === (Array[String]("MASTERCARD", "blah blah blah blah **************** blah blah blah")))
+
+    }
+    
+    test("test-9") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("secret secrets: 340000000000000") === (Array[String]("AMEX", "secret secrets: ***************")))
+
+    }
+    
+    test("test-10") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("dont read this -> 4111111111111 <- no! stop!") === (Array[String]("VISA", "dont read this -> ************* <- no! stop!")))
+
+    }
+    
+    test("test-11") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("598241111111111104454") === (Array[String]("VISA", "5982*************4454")))
+
+    }
+    
+    test("test-12") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("22254121212121212123333") === (Array[String]("MASTERCARD", "222****************3333")))
+
+    }
+    
+    test("test-13") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("11111111113434343434343431111111111") === (Array[String]("AMEX", "1111111111***************1111111111")))
+
+    }
+    
+    test("test-14") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("") === (Array[String]("NONE", "")))
+
+    }
+    
+    test("test-15") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails(" ") === (Array[String]("NONE", " ")))
+
+    }
+    
+    test("test-16") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("4111111111110 and 4111111111112") === (Array[String]("VISA", "VISA", "************* and *************")))
+
+    }
+    
+    test("test-17") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("343434343434343 and 343434343434344 and 343434343434345") === (Array[String]("AMEX", "AMEX", "AMEX", "*************** and *************** and ***************")))
+
+    }
+    
+    test("test-18") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("5111111111111111 and 5111111111111112 and 5111111111111113") === (Array[String]("MASTERCARD", "MASTERCARD", "MASTERCARD", "**************** and **************** and ****************")))
+
+    }
+    
+    test("test-19") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("5111111111111111 and 343434343434343") === (Array[String]("MASTERCARD", "AMEX", "**************** and ***************")))
+
+    }
+    
+    test("test-20") {
+
+        val instance = new Arti
+
+        assert(instance.redactCardDetails("5111111111111111 and 343434343434343 and 4111111111111") === (Array[String]("MASTERCARD", "AMEX", "VISA", "**************** and *************** and *************")))
+
+    }
+
+}

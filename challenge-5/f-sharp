@@ -1,0 +1,85 @@
+module ArtiTests
+
+open NUnit.Framework
+
+
+[<Test>]
+let ``Test1`` () =
+ Assert.AreEqual([| "VISA"; "This is a secret but my card number is *************! Shhhh! Don't tell anyone!" |], Arti.RedactCardDetails("This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!"))
+
+[<Test>]
+let ``Test2`` () =
+ Assert.AreEqual([| "MASTERCARD"; "123-****************-123 oops! Don't read that!!" |], Arti.RedactCardDetails("123-5200000000000000-123 oops! Don't read that!!"))
+
+[<Test>]
+let ``Test3`` () =
+ Assert.AreEqual([| "MASTERCARD"; "****************123456789" |], Arti.RedactCardDetails("5300000000000000123456789"))
+
+[<Test>]
+let ``Test4`` () =
+ Assert.AreEqual([| "MASTERCARD"; "98767****************" |], Arti.RedactCardDetails("987675400000000000000"))
+
+[<Test>]
+let ``Test5`` () =
+ Assert.AreEqual([| "AMEX"; "***************" |], Arti.RedactCardDetails("370000000000000"))
+
+[<Test>]
+let ``Test6`` () =
+ Assert.AreEqual([| "NONE"; "15986700000000000000075670987654321" |], Arti.RedactCardDetails("15986700000000000000075670987654321"))
+
+[<Test>]
+let ``Test7`` () =
+ Assert.AreEqual([| "NONE"; "No private data here!" |], Arti.RedactCardDetails("No private data here!"))
+
+[<Test>]
+let ``Test8`` () =
+ Assert.AreEqual([| "MASTERCARD"; "blah blah blah blah **************** blah blah blah" |], Arti.RedactCardDetails("blah blah blah blah 5100000000000000 blah blah blah"))
+
+[<Test>]
+let ``Test9`` () =
+ Assert.AreEqual([| "AMEX"; "secret secrets: ***************" |], Arti.RedactCardDetails("secret secrets: 340000000000000"))
+
+[<Test>]
+let ``Test10`` () =
+ Assert.AreEqual([| "VISA"; "dont read this -> ************* <- no! stop!" |], Arti.RedactCardDetails("dont read this -> 4111111111111 <- no! stop!"))
+
+[<Test>]
+let ``Test11`` () =
+ Assert.AreEqual([| "VISA"; "5982*************4454" |], Arti.RedactCardDetails("598241111111111104454"))
+
+[<Test>]
+let ``Test12`` () =
+ Assert.AreEqual([| "MASTERCARD"; "222****************3333" |], Arti.RedactCardDetails("22254121212121212123333"))
+
+[<Test>]
+let ``Test13`` () =
+ Assert.AreEqual([| "AMEX"; "1111111111***************1111111111" |], Arti.RedactCardDetails("11111111113434343434343431111111111"))
+
+[<Test>]
+let ``Test14`` () =
+ Assert.AreEqual([| "NONE"; "" |], Arti.RedactCardDetails(""))
+
+[<Test>]
+let ``Test15`` () =
+ Assert.AreEqual([| "NONE"; " " |], Arti.RedactCardDetails(" "))
+
+[<Test>]
+let ``Test16`` () =
+ Assert.AreEqual([| "VISA"; "VISA"; "************* and *************" |], Arti.RedactCardDetails("4111111111110 and 4111111111112"))
+
+[<Test>]
+let ``Test17`` () =
+ Assert.AreEqual([| "AMEX"; "AMEX"; "AMEX"; "*************** and *************** and ***************" |], Arti.RedactCardDetails("343434343434343 and 343434343434344 and 343434343434345"))
+
+[<Test>]
+let ``Test18`` () =
+ Assert.AreEqual([| "MASTERCARD"; "MASTERCARD"; "MASTERCARD"; "**************** and **************** and ****************" |], Arti.RedactCardDetails("5111111111111111 and 5111111111111112 and 5111111111111113"))
+
+[<Test>]
+let ``Test19`` () =
+ Assert.AreEqual([| "MASTERCARD"; "AMEX"; "**************** and ***************" |], Arti.RedactCardDetails("5111111111111111 and 343434343434343"))
+
+[<Test>]
+let ``Test20`` () =
+ Assert.AreEqual([| "MASTERCARD"; "AMEX"; "VISA"; "**************** and *************** and *************" |], Arti.RedactCardDetails("5111111111111111 and 343434343434343 and 4111111111111"))
+

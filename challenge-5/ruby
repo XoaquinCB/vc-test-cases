@@ -1,0 +1,87 @@
+require './solution'
+require 'minitest/autorun'
+
+class TestArti < MiniTest::Unit::TestCase
+
+
+def test_1
+    assert_equal Array["VISA", "This is a secret but my card number is *************! Shhhh! Don't tell anyone!"], redact_card_details("This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!")
+end
+
+def test_2
+    assert_equal Array["MASTERCARD", "123-****************-123 oops! Don't read that!!"], redact_card_details("123-5200000000000000-123 oops! Don't read that!!")
+end
+
+def test_3
+    assert_equal Array["MASTERCARD", "****************123456789"], redact_card_details("5300000000000000123456789")
+end
+
+def test_4
+    assert_equal Array["MASTERCARD", "98767****************"], redact_card_details("987675400000000000000")
+end
+
+def test_5
+    assert_equal Array["AMEX", "***************"], redact_card_details("370000000000000")
+end
+
+def test_6
+    assert_equal Array["NONE", "15986700000000000000075670987654321"], redact_card_details("15986700000000000000075670987654321")
+end
+
+def test_7
+    assert_equal Array["NONE", "No private data here!"], redact_card_details("No private data here!")
+end
+
+def test_8
+    assert_equal Array["MASTERCARD", "blah blah blah blah **************** blah blah blah"], redact_card_details("blah blah blah blah 5100000000000000 blah blah blah")
+end
+
+def test_9
+    assert_equal Array["AMEX", "secret secrets: ***************"], redact_card_details("secret secrets: 340000000000000")
+end
+
+def test_10
+    assert_equal Array["VISA", "dont read this -> ************* <- no! stop!"], redact_card_details("dont read this -> 4111111111111 <- no! stop!")
+end
+
+def test_11
+    assert_equal Array["VISA", "5982*************4454"], redact_card_details("598241111111111104454")
+end
+
+def test_12
+    assert_equal Array["MASTERCARD", "222****************3333"], redact_card_details("22254121212121212123333")
+end
+
+def test_13
+    assert_equal Array["AMEX", "1111111111***************1111111111"], redact_card_details("11111111113434343434343431111111111")
+end
+
+def test_14
+    assert_equal Array["NONE", ""], redact_card_details("")
+end
+
+def test_15
+    assert_equal Array["NONE", " "], redact_card_details(" ")
+end
+
+def test_16
+    assert_equal Array["VISA", "VISA", "************* and *************"], redact_card_details("4111111111110 and 4111111111112")
+end
+
+def test_17
+    assert_equal Array["AMEX", "AMEX", "AMEX", "*************** and *************** and ***************"], redact_card_details("343434343434343 and 343434343434344 and 343434343434345")
+end
+
+def test_18
+    assert_equal Array["MASTERCARD", "MASTERCARD", "MASTERCARD", "**************** and **************** and ****************"], redact_card_details("5111111111111111 and 5111111111111112 and 5111111111111113")
+end
+
+def test_19
+    assert_equal Array["MASTERCARD", "AMEX", "**************** and ***************"], redact_card_details("5111111111111111 and 343434343434343")
+end
+
+def test_20
+    assert_equal Array["MASTERCARD", "AMEX", "VISA", "**************** and *************** and *************"], redact_card_details("5111111111111111 and 343434343434343 and 4111111111111")
+end
+
+end

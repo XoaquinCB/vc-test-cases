@@ -1,0 +1,45 @@
+library(RUnit)
+source('solution.R')
+
+
+checkEquals(c("VISA", "This is a secret but my card number is *************! Shhhh! Don't tell anyone!"), redactCardDetails("This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!"));
+
+checkEquals(c("MASTERCARD", "123-****************-123 oops! Don't read that!!"), redactCardDetails("123-5200000000000000-123 oops! Don't read that!!"));
+
+checkEquals(c("MASTERCARD", "****************123456789"), redactCardDetails("5300000000000000123456789"));
+
+checkEquals(c("MASTERCARD", "98767****************"), redactCardDetails("987675400000000000000"));
+
+checkEquals(c("AMEX", "***************"), redactCardDetails("370000000000000"));
+
+checkEquals(c("NONE", "15986700000000000000075670987654321"), redactCardDetails("15986700000000000000075670987654321"));
+
+checkEquals(c("NONE", "No private data here!"), redactCardDetails("No private data here!"));
+
+checkEquals(c("MASTERCARD", "blah blah blah blah **************** blah blah blah"), redactCardDetails("blah blah blah blah 5100000000000000 blah blah blah"));
+
+checkEquals(c("AMEX", "secret secrets: ***************"), redactCardDetails("secret secrets: 340000000000000"));
+
+checkEquals(c("VISA", "dont read this -> ************* <- no! stop!"), redactCardDetails("dont read this -> 4111111111111 <- no! stop!"));
+
+checkEquals(c("VISA", "5982*************4454"), redactCardDetails("598241111111111104454"));
+
+checkEquals(c("MASTERCARD", "222****************3333"), redactCardDetails("22254121212121212123333"));
+
+checkEquals(c("AMEX", "1111111111***************1111111111"), redactCardDetails("11111111113434343434343431111111111"));
+
+checkEquals(c("NONE", ""), redactCardDetails(""));
+
+checkEquals(c("NONE", " "), redactCardDetails(" "));
+
+checkEquals(c("VISA", "VISA", "************* and *************"), redactCardDetails("4111111111110 and 4111111111112"));
+
+checkEquals(c("AMEX", "AMEX", "AMEX", "*************** and *************** and ***************"), redactCardDetails("343434343434343 and 343434343434344 and 343434343434345"));
+
+checkEquals(c("MASTERCARD", "MASTERCARD", "MASTERCARD", "**************** and **************** and ****************"), redactCardDetails("5111111111111111 and 5111111111111112 and 5111111111111113"));
+
+checkEquals(c("MASTERCARD", "AMEX", "**************** and ***************"), redactCardDetails("5111111111111111 and 343434343434343"));
+
+checkEquals(c("MASTERCARD", "AMEX", "VISA", "**************** and *************** and *************"), redactCardDetails("5111111111111111 and 343434343434343 and 4111111111111"));
+
+print('All tests passed')

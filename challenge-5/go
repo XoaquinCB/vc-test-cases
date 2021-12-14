@@ -1,0 +1,224 @@
+package Solution
+
+import ("testing")
+
+func Test_1(t* testing.T) {
+    message := "This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!"
+    var expected = []string {"VISA", "This is a secret but my card number is *************! Shhhh! Don't tell anyone!"}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_2(t* testing.T) {
+    message := "123-5200000000000000-123 oops! Don't read that!!"
+    var expected = []string {"MASTERCARD", "123-****************-123 oops! Don't read that!!"}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_3(t* testing.T) {
+    message := "5300000000000000123456789"
+    var expected = []string {"MASTERCARD", "****************123456789"}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_4(t* testing.T) {
+    message := "987675400000000000000"
+    var expected = []string {"MASTERCARD", "98767****************"}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_5(t* testing.T) {
+    message := "370000000000000"
+    var expected = []string {"AMEX", "***************"}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_6(t* testing.T) {
+    message := "15986700000000000000075670987654321"
+    var expected = []string {"NONE", "15986700000000000000075670987654321"}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_7(t* testing.T) {
+    message := "No private data here!"
+    var expected = []string {"NONE", "No private data here!"}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_8(t* testing.T) {
+    message := "blah blah blah blah 5100000000000000 blah blah blah"
+    var expected = []string {"MASTERCARD", "blah blah blah blah **************** blah blah blah"}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_9(t* testing.T) {
+    message := "secret secrets: 340000000000000"
+    var expected = []string {"AMEX", "secret secrets: ***************"}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_10(t* testing.T) {
+    message := "dont read this -> 4111111111111 <- no! stop!"
+    var expected = []string {"VISA", "dont read this -> ************* <- no! stop!"}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_11(t* testing.T) {
+    message := "598241111111111104454"
+    var expected = []string {"VISA", "5982*************4454"}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_12(t* testing.T) {
+    message := "22254121212121212123333"
+    var expected = []string {"MASTERCARD", "222****************3333"}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_13(t* testing.T) {
+    message := "11111111113434343434343431111111111"
+    var expected = []string {"AMEX", "1111111111***************1111111111"}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_14(t* testing.T) {
+    message := ""
+    var expected = []string {"NONE", ""}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_15(t* testing.T) {
+    message := " "
+    var expected = []string {"NONE", " "}
+    var output[2] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_16(t* testing.T) {
+    message := "4111111111110 and 4111111111112"
+    var expected = []string {"VISA", "VISA", "************* and *************"}
+    var output[3] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_17(t* testing.T) {
+    message := "343434343434343 and 343434343434344 and 343434343434345"
+    var expected = []string {"AMEX", "AMEX", "AMEX", "*************** and *************** and ***************"}
+    var output[4] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_18(t* testing.T) {
+    message := "5111111111111111 and 5111111111111112 and 5111111111111113"
+    var expected = []string {"MASTERCARD", "MASTERCARD", "MASTERCARD", "**************** and **************** and ****************"}
+    var output[4] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_19(t* testing.T) {
+    message := "5111111111111111 and 343434343434343"
+    var expected = []string {"MASTERCARD", "AMEX", "**************** and ***************"}
+    var output[3] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}
+func Test_20(t* testing.T) {
+    message := "5111111111111111 and 343434343434343 and 4111111111111"
+    var expected = []string {"MASTERCARD", "AMEX", "VISA", "**************** and *************** and *************"}
+    var output[4] string
+
+    output = RedactCardDetails(message)
+
+    if (output != expected) {
+        t.Error("output != expected as expected.")
+    }
+}

@@ -1,0 +1,252 @@
+#include "solution.h"
+#include "unity.h"
+#include <stdbool.h>
+
+void setUp(void)
+{
+}
+
+void tearDown(void)
+{
+}
+
+
+void test1(void)
+{
+    char* message = "This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!";
+    int expectedSize = 2;
+    char* expected[2] = { "VISA", "This is a secret but my card number is *************! Shhhh! Don't tell anyone!" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test2(void)
+{
+    char* message = "123-5200000000000000-123 oops! Don't read that!!";
+    int expectedSize = 2;
+    char* expected[2] = { "MASTERCARD", "123-****************-123 oops! Don't read that!!" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test3(void)
+{
+    char* message = "5300000000000000123456789";
+    int expectedSize = 2;
+    char* expected[2] = { "MASTERCARD", "****************123456789" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test4(void)
+{
+    char* message = "987675400000000000000";
+    int expectedSize = 2;
+    char* expected[2] = { "MASTERCARD", "98767****************" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test5(void)
+{
+    char* message = "370000000000000";
+    int expectedSize = 2;
+    char* expected[2] = { "AMEX", "***************" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test6(void)
+{
+    char* message = "15986700000000000000075670987654321";
+    int expectedSize = 2;
+    char* expected[2] = { "NONE", "15986700000000000000075670987654321" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test7(void)
+{
+    char* message = "No private data here!";
+    int expectedSize = 2;
+    char* expected[2] = { "NONE", "No private data here!" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test8(void)
+{
+    char* message = "blah blah blah blah 5100000000000000 blah blah blah";
+    int expectedSize = 2;
+    char* expected[2] = { "MASTERCARD", "blah blah blah blah **************** blah blah blah" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test9(void)
+{
+    char* message = "secret secrets: 340000000000000";
+    int expectedSize = 2;
+    char* expected[2] = { "AMEX", "secret secrets: ***************" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test10(void)
+{
+    char* message = "dont read this -> 4111111111111 <- no! stop!";
+    int expectedSize = 2;
+    char* expected[2] = { "VISA", "dont read this -> ************* <- no! stop!" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test11(void)
+{
+    char* message = "598241111111111104454";
+    int expectedSize = 2;
+    char* expected[2] = { "VISA", "5982*************4454" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test12(void)
+{
+    char* message = "22254121212121212123333";
+    int expectedSize = 2;
+    char* expected[2] = { "MASTERCARD", "222****************3333" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test13(void)
+{
+    char* message = "11111111113434343434343431111111111";
+    int expectedSize = 2;
+    char* expected[2] = { "AMEX", "1111111111***************1111111111" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test14(void)
+{
+    char* message = "";
+    int expectedSize = 2;
+    char* expected[2] = { "NONE", "" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test15(void)
+{
+    char* message = " ";
+    int expectedSize = 2;
+    char* expected[2] = { "NONE", " " };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test16(void)
+{
+    char* message = "4111111111110 and 4111111111112";
+    int expectedSize = 3;
+    char* expected[3] = { "VISA", "VISA", "************* and *************" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test17(void)
+{
+    char* message = "343434343434343 and 343434343434344 and 343434343434345";
+    int expectedSize = 4;
+    char* expected[4] = { "AMEX", "AMEX", "AMEX", "*************** and *************** and ***************" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test18(void)
+{
+    char* message = "5111111111111111 and 5111111111111112 and 5111111111111113";
+    int expectedSize = 4;
+    char* expected[4] = { "MASTERCARD", "MASTERCARD", "MASTERCARD", "**************** and **************** and ****************" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test19(void)
+{
+    char* message = "5111111111111111 and 343434343434343";
+    int expectedSize = 3;
+    char* expected[3] = { "MASTERCARD", "AMEX", "**************** and ***************" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}
+
+void test20(void)
+{
+    char* message = "5111111111111111 and 343434343434343 and 4111111111111";
+    int expectedSize = 4;
+    char* expected[4] = { "MASTERCARD", "AMEX", "VISA", "**************** and *************** and *************" };
+
+    char** output = RedactCardDetails(message);
+
+    for(int i = 0; i < expectedSize; i++)
+        TEST_ASSERT_EQUAL(expected[i], output[i]);
+}

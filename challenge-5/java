@@ -1,0 +1,166 @@
+import org.junit.*;
+import static org.junit.Assert.*;
+
+public class Tests
+{
+    
+    @Test
+    public void test1()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "VISA", "This is a secret but my card number is *************! Shhhh! Don't tell anyone!" }, solution.redactCardDetails("This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!"));
+    }
+    
+    @Test
+    public void test2()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "MASTERCARD", "123-****************-123 oops! Don't read that!!" }, solution.redactCardDetails("123-5200000000000000-123 oops! Don't read that!!"));
+    }
+    
+    @Test
+    public void test3()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "MASTERCARD", "****************123456789" }, solution.redactCardDetails("5300000000000000123456789"));
+    }
+    
+    @Test
+    public void test4()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "MASTERCARD", "98767****************" }, solution.redactCardDetails("987675400000000000000"));
+    }
+    
+    @Test
+    public void test5()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "AMEX", "***************" }, solution.redactCardDetails("370000000000000"));
+    }
+    
+    @Test
+    public void test6()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "NONE", "15986700000000000000075670987654321" }, solution.redactCardDetails("15986700000000000000075670987654321"));
+    }
+    
+    @Test
+    public void test7()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "NONE", "No private data here!" }, solution.redactCardDetails("No private data here!"));
+    }
+    
+    @Test
+    public void test8()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "MASTERCARD", "blah blah blah blah **************** blah blah blah" }, solution.redactCardDetails("blah blah blah blah 5100000000000000 blah blah blah"));
+    }
+    
+    @Test
+    public void test9()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "AMEX", "secret secrets: ***************" }, solution.redactCardDetails("secret secrets: 340000000000000"));
+    }
+    
+    @Test
+    public void test10()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "VISA", "dont read this -> ************* <- no! stop!" }, solution.redactCardDetails("dont read this -> 4111111111111 <- no! stop!"));
+    }
+    
+    @Test
+    public void test11()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "VISA", "5982*************4454" }, solution.redactCardDetails("598241111111111104454"));
+    }
+    
+    @Test
+    public void test12()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "MASTERCARD", "222****************3333" }, solution.redactCardDetails("22254121212121212123333"));
+    }
+    
+    @Test
+    public void test13()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "AMEX", "1111111111***************1111111111" }, solution.redactCardDetails("11111111113434343434343431111111111"));
+    }
+    
+    @Test
+    public void test14()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "NONE", "" }, solution.redactCardDetails(""));
+    }
+    
+    @Test
+    public void test15()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "NONE", " " }, solution.redactCardDetails(" "));
+    }
+    
+    @Test
+    public void test16()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "VISA", "VISA", "************* and *************" }, solution.redactCardDetails("4111111111110 and 4111111111112"));
+    }
+    
+    @Test
+    public void test17()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "AMEX", "AMEX", "AMEX", "*************** and *************** and ***************" }, solution.redactCardDetails("343434343434343 and 343434343434344 and 343434343434345"));
+    }
+    
+    @Test
+    public void test18()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "MASTERCARD", "MASTERCARD", "MASTERCARD", "**************** and **************** and ****************" }, solution.redactCardDetails("5111111111111111 and 5111111111111112 and 5111111111111113"));
+    }
+    
+    @Test
+    public void test19()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "MASTERCARD", "AMEX", "**************** and ***************" }, solution.redactCardDetails("5111111111111111 and 343434343434343"));
+    }
+    
+    @Test
+    public void test20()
+    {
+        Arti solution = new Arti();
+
+        assertArrayEquals(new String[] { "MASTERCARD", "AMEX", "VISA", "**************** and *************** and *************" }, solution.redactCardDetails("5111111111111111 and 343434343434343 and 4111111111111"));
+    }
+}

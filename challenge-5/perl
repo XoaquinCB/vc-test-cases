@@ -1,0 +1,206 @@
+use strict;
+use warnings 'all';
+use Test::Simple qw( no_plan );
+
+require 'solution.perl';
+
+
+my @test1Output = RedactCardDetails("This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!");
+my @test1Expected = ("VISA", "This is a secret but my card number is *************! Shhhh! Don't tell anyone!");
+my $test1OutputSize = @test1Output;
+my $test1ExpectedSize = @test1Expected;
+my $test1MaxSize = ($test1OutputSize, $test1ExpectedSize)[$test1OutputSize < $test1ExpectedSize];
+for(my $i = 0; $i < $test1MaxSize; $i++)
+{
+    ok($test1Output[$i] eq $test1Expected[$i], 'Test1' );
+}
+
+my @test2Output = RedactCardDetails("123-5200000000000000-123 oops! Don't read that!!");
+my @test2Expected = ("MASTERCARD", "123-****************-123 oops! Don't read that!!");
+my $test2OutputSize = @test2Output;
+my $test2ExpectedSize = @test2Expected;
+my $test2MaxSize = ($test2OutputSize, $test2ExpectedSize)[$test2OutputSize < $test2ExpectedSize];
+for(my $i = 0; $i < $test2MaxSize; $i++)
+{
+    ok($test2Output[$i] eq $test2Expected[$i], 'Test2' );
+}
+
+my @test3Output = RedactCardDetails("5300000000000000123456789");
+my @test3Expected = ("MASTERCARD", "****************123456789");
+my $test3OutputSize = @test3Output;
+my $test3ExpectedSize = @test3Expected;
+my $test3MaxSize = ($test3OutputSize, $test3ExpectedSize)[$test3OutputSize < $test3ExpectedSize];
+for(my $i = 0; $i < $test3MaxSize; $i++)
+{
+    ok($test3Output[$i] eq $test3Expected[$i], 'Test3' );
+}
+
+my @test4Output = RedactCardDetails("987675400000000000000");
+my @test4Expected = ("MASTERCARD", "98767****************");
+my $test4OutputSize = @test4Output;
+my $test4ExpectedSize = @test4Expected;
+my $test4MaxSize = ($test4OutputSize, $test4ExpectedSize)[$test4OutputSize < $test4ExpectedSize];
+for(my $i = 0; $i < $test4MaxSize; $i++)
+{
+    ok($test4Output[$i] eq $test4Expected[$i], 'Test4' );
+}
+
+my @test5Output = RedactCardDetails("370000000000000");
+my @test5Expected = ("AMEX", "***************");
+my $test5OutputSize = @test5Output;
+my $test5ExpectedSize = @test5Expected;
+my $test5MaxSize = ($test5OutputSize, $test5ExpectedSize)[$test5OutputSize < $test5ExpectedSize];
+for(my $i = 0; $i < $test5MaxSize; $i++)
+{
+    ok($test5Output[$i] eq $test5Expected[$i], 'Test5' );
+}
+
+my @test6Output = RedactCardDetails("15986700000000000000075670987654321");
+my @test6Expected = ("NONE", "15986700000000000000075670987654321");
+my $test6OutputSize = @test6Output;
+my $test6ExpectedSize = @test6Expected;
+my $test6MaxSize = ($test6OutputSize, $test6ExpectedSize)[$test6OutputSize < $test6ExpectedSize];
+for(my $i = 0; $i < $test6MaxSize; $i++)
+{
+    ok($test6Output[$i] eq $test6Expected[$i], 'Test6' );
+}
+
+my @test7Output = RedactCardDetails("No private data here!");
+my @test7Expected = ("NONE", "No private data here!");
+my $test7OutputSize = @test7Output;
+my $test7ExpectedSize = @test7Expected;
+my $test7MaxSize = ($test7OutputSize, $test7ExpectedSize)[$test7OutputSize < $test7ExpectedSize];
+for(my $i = 0; $i < $test7MaxSize; $i++)
+{
+    ok($test7Output[$i] eq $test7Expected[$i], 'Test7' );
+}
+
+my @test8Output = RedactCardDetails("blah blah blah blah 5100000000000000 blah blah blah");
+my @test8Expected = ("MASTERCARD", "blah blah blah blah **************** blah blah blah");
+my $test8OutputSize = @test8Output;
+my $test8ExpectedSize = @test8Expected;
+my $test8MaxSize = ($test8OutputSize, $test8ExpectedSize)[$test8OutputSize < $test8ExpectedSize];
+for(my $i = 0; $i < $test8MaxSize; $i++)
+{
+    ok($test8Output[$i] eq $test8Expected[$i], 'Test8' );
+}
+
+my @test9Output = RedactCardDetails("secret secrets: 340000000000000");
+my @test9Expected = ("AMEX", "secret secrets: ***************");
+my $test9OutputSize = @test9Output;
+my $test9ExpectedSize = @test9Expected;
+my $test9MaxSize = ($test9OutputSize, $test9ExpectedSize)[$test9OutputSize < $test9ExpectedSize];
+for(my $i = 0; $i < $test9MaxSize; $i++)
+{
+    ok($test9Output[$i] eq $test9Expected[$i], 'Test9' );
+}
+
+my @test10Output = RedactCardDetails("dont read this -> 4111111111111 <- no! stop!");
+my @test10Expected = ("VISA", "dont read this -> ************* <- no! stop!");
+my $test10OutputSize = @test10Output;
+my $test10ExpectedSize = @test10Expected;
+my $test10MaxSize = ($test10OutputSize, $test10ExpectedSize)[$test10OutputSize < $test10ExpectedSize];
+for(my $i = 0; $i < $test10MaxSize; $i++)
+{
+    ok($test10Output[$i] eq $test10Expected[$i], 'Test10' );
+}
+
+my @test11Output = RedactCardDetails("598241111111111104454");
+my @test11Expected = ("VISA", "5982*************4454");
+my $test11OutputSize = @test11Output;
+my $test11ExpectedSize = @test11Expected;
+my $test11MaxSize = ($test11OutputSize, $test11ExpectedSize)[$test11OutputSize < $test11ExpectedSize];
+for(my $i = 0; $i < $test11MaxSize; $i++)
+{
+    ok($test11Output[$i] eq $test11Expected[$i], 'Test11' );
+}
+
+my @test12Output = RedactCardDetails("22254121212121212123333");
+my @test12Expected = ("MASTERCARD", "222****************3333");
+my $test12OutputSize = @test12Output;
+my $test12ExpectedSize = @test12Expected;
+my $test12MaxSize = ($test12OutputSize, $test12ExpectedSize)[$test12OutputSize < $test12ExpectedSize];
+for(my $i = 0; $i < $test12MaxSize; $i++)
+{
+    ok($test12Output[$i] eq $test12Expected[$i], 'Test12' );
+}
+
+my @test13Output = RedactCardDetails("11111111113434343434343431111111111");
+my @test13Expected = ("AMEX", "1111111111***************1111111111");
+my $test13OutputSize = @test13Output;
+my $test13ExpectedSize = @test13Expected;
+my $test13MaxSize = ($test13OutputSize, $test13ExpectedSize)[$test13OutputSize < $test13ExpectedSize];
+for(my $i = 0; $i < $test13MaxSize; $i++)
+{
+    ok($test13Output[$i] eq $test13Expected[$i], 'Test13' );
+}
+
+my @test14Output = RedactCardDetails("");
+my @test14Expected = ("NONE", "");
+my $test14OutputSize = @test14Output;
+my $test14ExpectedSize = @test14Expected;
+my $test14MaxSize = ($test14OutputSize, $test14ExpectedSize)[$test14OutputSize < $test14ExpectedSize];
+for(my $i = 0; $i < $test14MaxSize; $i++)
+{
+    ok($test14Output[$i] eq $test14Expected[$i], 'Test14' );
+}
+
+my @test15Output = RedactCardDetails(" ");
+my @test15Expected = ("NONE", " ");
+my $test15OutputSize = @test15Output;
+my $test15ExpectedSize = @test15Expected;
+my $test15MaxSize = ($test15OutputSize, $test15ExpectedSize)[$test15OutputSize < $test15ExpectedSize];
+for(my $i = 0; $i < $test15MaxSize; $i++)
+{
+    ok($test15Output[$i] eq $test15Expected[$i], 'Test15' );
+}
+
+my @test16Output = RedactCardDetails("4111111111110 and 4111111111112");
+my @test16Expected = ("VISA", "VISA", "************* and *************");
+my $test16OutputSize = @test16Output;
+my $test16ExpectedSize = @test16Expected;
+my $test16MaxSize = ($test16OutputSize, $test16ExpectedSize)[$test16OutputSize < $test16ExpectedSize];
+for(my $i = 0; $i < $test16MaxSize; $i++)
+{
+    ok($test16Output[$i] eq $test16Expected[$i], 'Test16' );
+}
+
+my @test17Output = RedactCardDetails("343434343434343 and 343434343434344 and 343434343434345");
+my @test17Expected = ("AMEX", "AMEX", "AMEX", "*************** and *************** and ***************");
+my $test17OutputSize = @test17Output;
+my $test17ExpectedSize = @test17Expected;
+my $test17MaxSize = ($test17OutputSize, $test17ExpectedSize)[$test17OutputSize < $test17ExpectedSize];
+for(my $i = 0; $i < $test17MaxSize; $i++)
+{
+    ok($test17Output[$i] eq $test17Expected[$i], 'Test17' );
+}
+
+my @test18Output = RedactCardDetails("5111111111111111 and 5111111111111112 and 5111111111111113");
+my @test18Expected = ("MASTERCARD", "MASTERCARD", "MASTERCARD", "**************** and **************** and ****************");
+my $test18OutputSize = @test18Output;
+my $test18ExpectedSize = @test18Expected;
+my $test18MaxSize = ($test18OutputSize, $test18ExpectedSize)[$test18OutputSize < $test18ExpectedSize];
+for(my $i = 0; $i < $test18MaxSize; $i++)
+{
+    ok($test18Output[$i] eq $test18Expected[$i], 'Test18' );
+}
+
+my @test19Output = RedactCardDetails("5111111111111111 and 343434343434343");
+my @test19Expected = ("MASTERCARD", "AMEX", "**************** and ***************");
+my $test19OutputSize = @test19Output;
+my $test19ExpectedSize = @test19Expected;
+my $test19MaxSize = ($test19OutputSize, $test19ExpectedSize)[$test19OutputSize < $test19ExpectedSize];
+for(my $i = 0; $i < $test19MaxSize; $i++)
+{
+    ok($test19Output[$i] eq $test19Expected[$i], 'Test19' );
+}
+
+my @test20Output = RedactCardDetails("5111111111111111 and 343434343434343 and 4111111111111");
+my @test20Expected = ("MASTERCARD", "AMEX", "VISA", "**************** and *************** and *************");
+my $test20OutputSize = @test20Output;
+my $test20ExpectedSize = @test20Expected;
+my $test20MaxSize = ($test20OutputSize, $test20ExpectedSize)[$test20OutputSize < $test20ExpectedSize];
+for(my $i = 0; $i < $test20MaxSize; $i++)
+{
+    ok($test20Output[$i] eq $test20Expected[$i], 'Test20' );
+}

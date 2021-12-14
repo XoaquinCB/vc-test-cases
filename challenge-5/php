@@ -1,0 +1,109 @@
+<?php
+
+require_once 'Solution.php';
+
+class ArtiTest extends PHPUnit_Framework_TestCase
+{
+    
+    public function test1() 
+    {
+        $this->assertSame(["VISA", "This is a secret but my card number is *************! Shhhh! Don't tell anyone!"], redactCardDetails("This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!"));    
+    }
+    
+    public function test2() 
+    {
+        $this->assertSame(["MASTERCARD", "123-****************-123 oops! Don't read that!!"], redactCardDetails("123-5200000000000000-123 oops! Don't read that!!"));    
+    }
+    
+    public function test3() 
+    {
+        $this->assertSame(["MASTERCARD", "****************123456789"], redactCardDetails("5300000000000000123456789"));    
+    }
+    
+    public function test4() 
+    {
+        $this->assertSame(["MASTERCARD", "98767****************"], redactCardDetails("987675400000000000000"));    
+    }
+    
+    public function test5() 
+    {
+        $this->assertSame(["AMEX", "***************"], redactCardDetails("370000000000000"));    
+    }
+    
+    public function test6() 
+    {
+        $this->assertSame(["NONE", "15986700000000000000075670987654321"], redactCardDetails("15986700000000000000075670987654321"));    
+    }
+    
+    public function test7() 
+    {
+        $this->assertSame(["NONE", "No private data here!"], redactCardDetails("No private data here!"));    
+    }
+    
+    public function test8() 
+    {
+        $this->assertSame(["MASTERCARD", "blah blah blah blah **************** blah blah blah"], redactCardDetails("blah blah blah blah 5100000000000000 blah blah blah"));    
+    }
+    
+    public function test9() 
+    {
+        $this->assertSame(["AMEX", "secret secrets: ***************"], redactCardDetails("secret secrets: 340000000000000"));    
+    }
+    
+    public function test10() 
+    {
+        $this->assertSame(["VISA", "dont read this -> ************* <- no! stop!"], redactCardDetails("dont read this -> 4111111111111 <- no! stop!"));    
+    }
+    
+    public function test11() 
+    {
+        $this->assertSame(["VISA", "5982*************4454"], redactCardDetails("598241111111111104454"));    
+    }
+    
+    public function test12() 
+    {
+        $this->assertSame(["MASTERCARD", "222****************3333"], redactCardDetails("22254121212121212123333"));    
+    }
+    
+    public function test13() 
+    {
+        $this->assertSame(["AMEX", "1111111111***************1111111111"], redactCardDetails("11111111113434343434343431111111111"));    
+    }
+    
+    public function test14() 
+    {
+        $this->assertSame(["NONE", ""], redactCardDetails(""));    
+    }
+    
+    public function test15() 
+    {
+        $this->assertSame(["NONE", " "], redactCardDetails(" "));    
+    }
+    
+    public function test16() 
+    {
+        $this->assertSame(["VISA", "VISA", "************* and *************"], redactCardDetails("4111111111110 and 4111111111112"));    
+    }
+    
+    public function test17() 
+    {
+        $this->assertSame(["AMEX", "AMEX", "AMEX", "*************** and *************** and ***************"], redactCardDetails("343434343434343 and 343434343434344 and 343434343434345"));    
+    }
+    
+    public function test18() 
+    {
+        $this->assertSame(["MASTERCARD", "MASTERCARD", "MASTERCARD", "**************** and **************** and ****************"], redactCardDetails("5111111111111111 and 5111111111111112 and 5111111111111113"));    
+    }
+    
+    public function test19() 
+    {
+        $this->assertSame(["MASTERCARD", "AMEX", "**************** and ***************"], redactCardDetails("5111111111111111 and 343434343434343"));    
+    }
+    
+    public function test20() 
+    {
+        $this->assertSame(["MASTERCARD", "AMEX", "VISA", "**************** and *************** and *************"], redactCardDetails("5111111111111111 and 343434343434343 and 4111111111111"));    
+    }
+}
+
+?>

@@ -1,0 +1,168 @@
+using System;
+using System.Collections.Generic;
+using NUnit.Framework;
+
+[TestFixture]
+public class ArtiTests
+{
+    
+    [Test]
+    public void Test1()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "VISA", "This is a secret but my card number is *************! Shhhh! Don't tell anyone!" }, solution.RedactCardDetails("This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!"));
+    }
+    
+    [Test]
+    public void Test2()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "MASTERCARD", "123-****************-123 oops! Don't read that!!" }, solution.RedactCardDetails("123-5200000000000000-123 oops! Don't read that!!"));
+    }
+    
+    [Test]
+    public void Test3()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "MASTERCARD", "****************123456789" }, solution.RedactCardDetails("5300000000000000123456789"));
+    }
+    
+    [Test]
+    public void Test4()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "MASTERCARD", "98767****************" }, solution.RedactCardDetails("987675400000000000000"));
+    }
+    
+    [Test]
+    public void Test5()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "AMEX", "***************" }, solution.RedactCardDetails("370000000000000"));
+    }
+    
+    [Test]
+    public void Test6()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "NONE", "15986700000000000000075670987654321" }, solution.RedactCardDetails("15986700000000000000075670987654321"));
+    }
+    
+    [Test]
+    public void Test7()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "NONE", "No private data here!" }, solution.RedactCardDetails("No private data here!"));
+    }
+    
+    [Test]
+    public void Test8()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "MASTERCARD", "blah blah blah blah **************** blah blah blah" }, solution.RedactCardDetails("blah blah blah blah 5100000000000000 blah blah blah"));
+    }
+    
+    [Test]
+    public void Test9()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "AMEX", "secret secrets: ***************" }, solution.RedactCardDetails("secret secrets: 340000000000000"));
+    }
+    
+    [Test]
+    public void Test10()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "VISA", "dont read this -> ************* <- no! stop!" }, solution.RedactCardDetails("dont read this -> 4111111111111 <- no! stop!"));
+    }
+    
+    [Test]
+    public void Test11()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "VISA", "5982*************4454" }, solution.RedactCardDetails("598241111111111104454"));
+    }
+    
+    [Test]
+    public void Test12()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "MASTERCARD", "222****************3333" }, solution.RedactCardDetails("22254121212121212123333"));
+    }
+    
+    [Test]
+    public void Test13()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "AMEX", "1111111111***************1111111111" }, solution.RedactCardDetails("11111111113434343434343431111111111"));
+    }
+    
+    [Test]
+    public void Test14()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "NONE", "" }, solution.RedactCardDetails(""));
+    }
+    
+    [Test]
+    public void Test15()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "NONE", " " }, solution.RedactCardDetails(" "));
+    }
+    
+    [Test]
+    public void Test16()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "VISA", "VISA", "************* and *************" }, solution.RedactCardDetails("4111111111110 and 4111111111112"));
+    }
+    
+    [Test]
+    public void Test17()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "AMEX", "AMEX", "AMEX", "*************** and *************** and ***************" }, solution.RedactCardDetails("343434343434343 and 343434343434344 and 343434343434345"));
+    }
+    
+    [Test]
+    public void Test18()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "MASTERCARD", "MASTERCARD", "MASTERCARD", "**************** and **************** and ****************" }, solution.RedactCardDetails("5111111111111111 and 5111111111111112 and 5111111111111113"));
+    }
+    
+    [Test]
+    public void Test19()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "MASTERCARD", "AMEX", "**************** and ***************" }, solution.RedactCardDetails("5111111111111111 and 343434343434343"));
+    }
+    
+    [Test]
+    public void Test20()
+    {
+        var solution = new Arti();
+
+        Assert.AreEqual(new string[] { "MASTERCARD", "AMEX", "VISA", "**************** and *************** and *************" }, solution.RedactCardDetails("5111111111111111 and 343434343434343 and 4111111111111"));
+    }
+}

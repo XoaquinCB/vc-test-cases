@@ -1,0 +1,169 @@
+Imports System
+Imports System.Collections.Generic
+Imports NUnit.Framework
+
+<TestFixture()> _
+Public Class ArtiTests
+
+    
+    <Test()> _
+    Public Sub Test1()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "VISA", "This is a secret but my card number is *************! Shhhh! Don't tell anyone!" }, solution.RedactCardDetails("This is a secret but my card number is 4000000000000! Shhhh! Don't tell anyone!"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test2()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "MASTERCARD", "123-****************-123 oops! Don't read that!!" }, solution.RedactCardDetails("123-5200000000000000-123 oops! Don't read that!!"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test3()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "MASTERCARD", "****************123456789" }, solution.RedactCardDetails("5300000000000000123456789"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test4()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "MASTERCARD", "98767****************" }, solution.RedactCardDetails("987675400000000000000"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test5()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "AMEX", "***************" }, solution.RedactCardDetails("370000000000000"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test6()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "NONE", "15986700000000000000075670987654321" }, solution.RedactCardDetails("15986700000000000000075670987654321"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test7()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "NONE", "No private data here!" }, solution.RedactCardDetails("No private data here!"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test8()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "MASTERCARD", "blah blah blah blah **************** blah blah blah" }, solution.RedactCardDetails("blah blah blah blah 5100000000000000 blah blah blah"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test9()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "AMEX", "secret secrets: ***************" }, solution.RedactCardDetails("secret secrets: 340000000000000"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test10()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "VISA", "dont read this -> ************* <- no! stop!" }, solution.RedactCardDetails("dont read this -> 4111111111111 <- no! stop!"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test11()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "VISA", "5982*************4454" }, solution.RedactCardDetails("598241111111111104454"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test12()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "MASTERCARD", "222****************3333" }, solution.RedactCardDetails("22254121212121212123333"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test13()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "AMEX", "1111111111***************1111111111" }, solution.RedactCardDetails("11111111113434343434343431111111111"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test14()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "NONE", "" }, solution.RedactCardDetails(""))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test15()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "NONE", " " }, solution.RedactCardDetails(" "))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test16()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "VISA", "VISA", "************* and *************" }, solution.RedactCardDetails("4111111111110 and 4111111111112"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test17()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "AMEX", "AMEX", "AMEX", "*************** and *************** and ***************" }, solution.RedactCardDetails("343434343434343 and 343434343434344 and 343434343434345"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test18()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "MASTERCARD", "MASTERCARD", "MASTERCARD", "**************** and **************** and ****************" }, solution.RedactCardDetails("5111111111111111 and 5111111111111112 and 5111111111111113"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test19()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "MASTERCARD", "AMEX", "**************** and ***************" }, solution.RedactCardDetails("5111111111111111 and 343434343434343"))
+
+    End Sub
+    
+    <Test()> _
+    Public Sub Test20()
+
+        Dim solution As Arti = New Arti()
+        Assert.AreEqual(New String() { "MASTERCARD", "AMEX", "VISA", "**************** and *************** and *************" }, solution.RedactCardDetails("5111111111111111 and 343434343434343 and 4111111111111"))
+
+    End Sub
+
+End Class
